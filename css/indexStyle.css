@@ -1,0 +1,39 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+    padding: 80px;
+    background-color: #A470DD;
+    color: #260065;
+    text-align: center;
+}
+
+.header p{
+    color: #462085;
+}
+
+.navbar{
+    overflow: hidden;
+    background-color: #333
+}
+
+.navbar a{
+    float: left;            /* Linka are placed on the left of the page */
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;    /*Add padding to the links */
+    text-decoration: none; /*Remove the underline on links*/
+}
+
+.navbar a.right{
+    float: right;
+}
+
+.navbar a:hover{
+    background-color: #dddddd;
+    color: black;
+}
