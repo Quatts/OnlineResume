@@ -22,13 +22,14 @@ class ChangingImage extends React.Component{
     constructor(props){
         super(props);
         this.imageSources = props.images.split(",");
-        this.state = {imagesource: props.startimagesource};
+        this.state = {imagesource: props.startimagesource, fadeIn:true};
 
     }
     
     componentDidMount(){
         this.timerID = setInterval(() => this.nextImage(), 5000);
         this.imagecount = 0;
+        this.setState({fadeIn:true});
     }
 
     componentWillUnmount(){
@@ -36,18 +37,25 @@ class ChangingImage extends React.Component{
     }
 
     nextImage(){
+        
+        this.setState({fadeIn: false});
+
         if(this.imagecount >= this.imageSources.length)
         {
             this.imagecount = 0;
         }
 
-        this.setState({imagesource: this.imageSources[this.imagecount]});
-        this.imagecount++;
+        this.timer = setTimeout(() => {this.setState({fadeIn:true}), this.setState({imagesource: this.imageSources[this.imagecount]}),this.imagecount++}, 500);
+
     }
 
     render(){
+
+        const classnames = this.state.fadeIn ? "fadeIn" : "fadeOut";
         return(
+        <div className = {classnames}>
             <Image source = {this.state.imagesource} height={this.props.height} width={this.props.width}/>
+        </div>
         );
     }
 }
