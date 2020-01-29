@@ -78,7 +78,7 @@ class ChangingImage extends React.Component{
         const classnames = this.state.fadeIn ? "fadeIn" : "fadeOut";
         return(
         <div className = {classnames}>
-            <Image source = {this.state.imagesource} height={this.props.height} width={this.props.width}/>
+            <Image source = {this.state.imagesource} height="auto" width="25%"/>
         </div>
         );
     }
@@ -109,6 +109,9 @@ function App(){
         </div>
         <div className="details">
                 <UnorderedList itemList = {["Java", "C++", "C#"]} />
+        </div>
+        <div className="details">
+                <UnorderedList itemList = {[".NET", "Swift", "MySQL"]} />
         </div>
     </div>
     );

@@ -60,6 +60,10 @@ h2{
     font-size: 35px;
 }
 
+li{
+    font-size: 25px;
+}
+
 .imageCarousel{
     text-align: center;
 }
@@ -72,4 +76,9 @@ h2{
 .fadeOut{
     transition: opacity 0.5s;
     opacity : 0;
+}
+
+.details{
+    width: 50%;
+    display: inline-block;
 }
