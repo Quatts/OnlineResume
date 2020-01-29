@@ -28,6 +28,20 @@ function BodyHeader(props)
     return <h2>{props.text}</h2>
 }
 
+function UnorderedList(props)
+{
+    const items = props.itemList;
+
+    const listItems = items.map((number) =>
+    <li key={number.toString()}>
+      {number}
+    </li>
+  );
+  return (
+    <ul>{listItems}</ul>
+  );
+}
+
 class ChangingImage extends React.Component{
     constructor(props){
         super(props);
@@ -92,6 +106,9 @@ function App(){
             <div className="skills">
                 <BodyHeader text="MY SKILLS"/>
             </div>
+        </div>
+        <div className="details">
+                <UnorderedList itemList = {["Java", "C++", "C#"]} />
         </div>
     </div>
     );
