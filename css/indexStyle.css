@@ -65,6 +65,8 @@ li{
 }
 
 .imageCarousel{
+    margin-left: 5%;
+    margin-right: 5%;
     text-align: center;
 }
 
@@ -79,6 +81,13 @@ li{
 }
 
 .details{
-    width: 50%;
+    width: 25%;
+    margin-left: 25%;
     display: inline-block;
+}
+
+.details-inline{
+    width: 25%;
+    margin-left: 0%;
+    margin-right: 25%;
 }

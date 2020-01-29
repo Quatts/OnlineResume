@@ -107,11 +107,14 @@ function App(){
                 <BodyHeader text="MY SKILLS"/>
             </div>
         </div>
-        <div className="details">
-                <UnorderedList itemList = {["Java", "C++", "C#"]} />
-        </div>
-        <div className="details">
-                <UnorderedList itemList = {[".NET", "Swift", "MySQL"]} />
+    <div className = "list-wrapper">
+            <div className="details">
+                <UnorderedList itemList = {["Java", "C++", "C#", "HTML", "CSS", "React"]} />
+            </div>
+            
+            <div className="details-inline">
+                <UnorderedList itemList = {[".NET", "Swift", "MySQL", "PHP", "XCode", "Android Studio"]} />
+            </div>
         </div>
     </div>
     );
