@@ -38,6 +38,21 @@ body{
     color: black;
 }
 
+/*MY SKILLS*/
+.header-wrapper{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    width: 25%;
+}
+
+.skills{
+    text-align: right;
+}
+/* MY SKILLS HEADER*/
+h2{
+    color: #462085;
+    font-size: 35px;
+}
+
 .imageCarousel{
     padding: 5px;
     text-align: center;

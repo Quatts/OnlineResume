@@ -18,6 +18,16 @@ function Image(props)
     return <img src={props.source} height={props.height} width={props.width}></img>
 }
 
+function BodyText(props)
+{
+    return <h3>{props.text}</h3>
+}
+
+function BodyHeader(props)
+{
+    return <h2>{props.text}</h2>
+}
+
 class ChangingImage extends React.Component{
     constructor(props){
         super(props);
@@ -77,6 +87,11 @@ function App(){
 
         <div className="imageCarousel">
             <ChangingImage images="media/src1.png,media/src2.png,media/src3.png" startimagesource = "media/src3.png"/>
+        </div>
+        <div className = "header-wrapper">
+            <div className="skills">
+                <BodyHeader text="MY SKILLS"/>
+            </div>
         </div>
     </div>
     );
