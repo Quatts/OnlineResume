@@ -109,11 +109,11 @@ function App(){
         </div>
     <div className = "list-wrapper">
             <div className="details">
-                <UnorderedList itemList = {["Java", "C++", "C#", "HTML", "CSS", "React"]} />
+                <UnorderedList itemList = {["Java", "C++", "C#", "HTML", "CSS", "React JS", "Python"]} />
             </div>
             
-            <div className="details-inline">
-                <UnorderedList itemList = {[".NET", "Swift", "MySQL", "PHP", "XCode", "Android Studio"]} />
+            <div className="details">
+                <UnorderedList itemList = {[".NET", "Swift", "MySQL", "PHP", "XCode", "Android Studio", "JavaScript"]} />
             </div>
         </div>
     </div>

@@ -81,13 +81,14 @@ li{
 }
 
 .details{
-    width: 25%;
-    margin-left: 25%;
+    width: 50%;
     display: inline-block;
+    color: #000000;
 }
 
-.details-inline{
-    width: 25%;
-    margin-left: 0%;
-    margin-right: 25%;
+.list-wrapper{
+    /*background-image: url(../media/purple-swoosh.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%; */
+    overflow: hidden;
 }
