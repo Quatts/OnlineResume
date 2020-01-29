@@ -81,9 +81,13 @@ li{
 }
 
 .details{
-    width: 50%;
+    width: 25%;
     display: inline-block;
     color: #000000;
+}
+
+.details ul{
+    list-style: none;
 }
 
 .list-wrapper{
@@ -91,4 +95,5 @@ li{
     background-repeat: no-repeat;
     background-size: 100% 100%; */
     overflow: hidden;
+    text-align: center;
 }
