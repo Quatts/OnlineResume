@@ -84,6 +84,58 @@ class ChangingImage extends React.Component{
     }
 }
 
+class ChangingDiv extends React.Component{
+    constructor(props)
+    {
+        super(props);
+        this.state = {lists: this.props.lists, titles: this.props.titles};
+        this.divcount = 0;
+    }
+
+    componentDidMount(){
+        this.timerID = setInterval(() => this.nextDiv(), 5000);
+        this.setState({fadeIn:true});
+    }
+
+    componentWillUnmount(){
+        clearInterval(timerID);
+    }
+
+    nextDiv(){
+        this.setState({fadeIn: false});
+
+        this.divcount++;
+
+        if(this.divcount >= this.state.lists.length)
+        {
+            this.divcount = 0;
+        }
+
+        this.timer = setTimeout(() => {this.setState({fadeIn:true})}, 500);
+    }
+
+    render(){
+        const listItems = this.state.lists[this.divcount].map((number) =>
+    <li key={number.toString()}>
+      {number}
+    </li>
+  );
+
+  const classnames = this.state.fadeIn ? "fadeIn details" : "fadeOut details";
+
+        return(
+            <div className = "changingdiv-wrapper">
+
+                <h4 className = {"skills-title"}>{this.state.titles[this.divcount]}</h4>
+
+                <div className = {classnames}>
+                    <ul>{listItems}</ul>
+                </div>
+            </div>
+        )
+    }
+}
+
 function App(){
     return (
     <div className="webPage">
@@ -103,18 +155,19 @@ function App(){
             <ChangingImage images="media/src1.png,media/src2.png,media/src3.png" startimagesource = "media/src3.png"/>
         </div>
         <div className = "header-wrapper">
-            <div className="skills">
+            <div className="sub-header">
+                <BodyHeader text="ABOUT ME"/>
+            </div>
+        </div>
+        <div className = "header-wrapper">
+            <div className="sub-header">
                 <BodyHeader text="MY SKILLS"/>
             </div>
         </div>
     <div className = "list-wrapper">
-            <div className="details">
-                <UnorderedList itemList = {["Java", "C++", "C#", "HTML", "CSS", "React JS", "Python"]} />
-            </div>
-            
-            <div className="details">
-                <UnorderedList itemList = {[".NET", "Swift", "MySQL", "PHP", "XCode", "Android Studio", "JavaScript"]} />
-            </div>
+            <ChangingDiv lists = {[["Java", "Javascript", "React JS", "HTML", "CSS", "SQL", "PHP"], 
+            ["C++", "C#", ".NET", "Python"], ["Swift", "Android Studio", "XCode"]]} 
+            titles = {["Web Development", "Systems Development", "Mobile Development"]}/>
         </div>
     </div>
     );

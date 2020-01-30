@@ -50,9 +50,9 @@ body{
     margin: 0px;
 }
 
-.skills{
+.sub-header{
     text-align: right;
-    width: 25%;
+    width: 30%;
 }
 /* MY SKILLS HEADER*/
 h2{
@@ -81,19 +81,91 @@ li{
 }
 
 .details{
-    width: 25%;
-    display: inline-block;
-    color: #000000;
+    height: 250px;
+    width: 250px;
+    background-color: #0000A0;
+    display: inline-flex;
+    border-radius:50%;
+    color: #ffffff;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    justify-content: center;
+    align-items: center;
 }
 
 .details ul{
+    margin-left: 0px;
+    padding-inline-start: 0px;
     list-style: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
 }
 
 .list-wrapper{
     /*background-image: url(../media/purple-swoosh.png);
     background-repeat: no-repeat;
     background-size: 100% 100%; */
-    overflow: hidden;
+    overflow-x: hidden;
+    white-space: nowrap;
     text-align: center;
+}
+
+.fadeIn.details{
+    /*opacity: 1;
+    transform: translateX(0%);
+    -webkit-transition: right 0s, transform 0.5s ease-out, opacity 0.5s;  /* Chrome 1-25, Safari 3.2+ 
+     -moz-transition: right 0s, transform 0.5s ease-out, opacity 0.5s;  /* Firefox 4-15 
+       -o-transition: right 0s, transform 0.5s ease-out, opacity 0.5s;  /* Opera 10.50–12.00 
+          transition: right 0s, transform 0.5s ease-out, opacity 0.5s;*/
+
+        animation: slide-in 0.5s;
+        -moz-animation: slide-in 0.5s;
+        -webkit-animation: slide-in 0.5s;
+        -o-animation: slide-in 0.5s;
+}
+
+@keyframes slide-in
+{
+    0%{
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+.fadeOut.details{
+    opacity: 0;
+    transform: translateX(-100%);
+    
+
+
+    -webkit-transition: transform 0.5s ease-out, opacity 0.5s;
+    -moz-transition: transform 0.5s ease-out, opacity 0.5s;  /* Firefox 4-15 */
+    -o-transition: transform 0.5s ease-out, opacity 0.5s;  /* Opera 10.50–12.00 */
+    transition: transform 0.5s ease-out, opacity 0.5s;
 }
