@@ -169,3 +169,24 @@ li{
     -o-transition: transform 0.5s ease-out, opacity 0.5s;  /* Opera 10.50–12.00 */
     transition: transform 0.5s ease-out, opacity 0.5s;
 }
+.buttons-wrapper{
+    padding: 2%;
+}
+
+.buttons-wrapper button{
+    border-radius: 50%;
+    border-style: none;
+    display: inline-block;
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
+    background-color: #aaaaaa;
+}
+
+.btn1{
+    float: left;
+}
+
+.btn2{
+    float: right;
+}

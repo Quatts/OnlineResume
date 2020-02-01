@@ -90,6 +90,8 @@ class ChangingDiv extends React.Component{
         super(props);
         this.state = {lists: this.props.lists, titles: this.props.titles};
         this.divcount = 0;
+        this.manualNextDiv = this.manualNextDiv.bind(this);
+        this.manualPrevDiv = this.manualPrevDiv.bind(this);
     }
 
     componentDidMount(){
@@ -99,6 +101,37 @@ class ChangingDiv extends React.Component{
 
     componentWillUnmount(){
         clearInterval(timerID);
+    }
+
+    manualPrevDiv(){
+        clearInterval(this.timerID);
+        
+        this.setState({fadeIn: false});
+
+        this.divcount--;
+
+        if(this.divcount < 0)
+        {
+            this.divcount = this.state.lists.length-1;
+        }
+
+        this.timer = setTimeout(() => {this.setState({fadeIn:true}), 
+        this.timerID = setInterval(() => this.nextDiv(), 5000);}, 500);
+    }
+
+    manualNextDiv(){
+        clearInterval(this.timerID);
+        this.setState({fadeIn: false});
+
+        this.divcount++;
+
+        if(this.divcount >= this.state.lists.length)
+        {
+            this.divcount = 0;
+        }
+
+        this.timer = setTimeout(() => {this.setState({fadeIn:true}), 
+        this.timerID = setInterval(() => this.nextDiv(), 5000);}, 500);
     }
 
     nextDiv(){
@@ -131,6 +164,11 @@ class ChangingDiv extends React.Component{
                 <div className = {classnames}>
                     <ul>{listItems}</ul>
                 </div>
+                
+                <div className = "buttons-wrapper">
+                    <button className="btn1" onClick={this.manualPrevDiv}>&lt;</button>
+                    <button className="btn2" onClick={this.manualNextDiv}>&gt;</button>
+                </div>
             </div>
         )
     }
@@ -159,15 +197,22 @@ function App(){
                 <BodyHeader text="ABOUT ME"/>
             </div>
         </div>
+
+        <div className="about-me-wrapper">
+
+        </div>  
+
         <div className = "header-wrapper">
             <div className="sub-header">
                 <BodyHeader text="MY SKILLS"/>
             </div>
         </div>
-    <div className = "list-wrapper">
+        
+        <div className = "list-wrapper">
             <ChangingDiv lists = {[["Java", "Javascript", "React JS", "HTML", "CSS", "SQL", "PHP"], 
-            ["C++", "C#", ".NET", "Python"], ["Swift", "Android Studio", "XCode"]]} 
-            titles = {["Web Development", "Systems Development", "Mobile Development"]}/>
+            ["C++", "C#", ".NET", "Python"], ["Swift", "Android Studio", "XCode"], 
+            ["Github", "XAMPP", "Visual Studio", "vim", "Sublime Text", "Eclipse"], ["Windows", "Unix"]]} 
+            titles = {["Web Development", "Systems Development", "Mobile Development", "Tools", "Misc."]}/>
         </div>
     </div>
     );
