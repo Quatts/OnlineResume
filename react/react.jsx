@@ -3,16 +3,6 @@ function Link(props)
     return <a href={props.destination}>{props.name}</a>
 }
 
-function Header(props)
-{
-    return <h1>{props.text}</h1>
-}
-
-function Paragraph(props)
-{
-    return <p>{props.text}</p>
-}
-
 function Image(props)
 {
     return <img src={props.source} height={props.height} width={props.width}></img>
@@ -78,7 +68,7 @@ class ChangingImage extends React.Component{
         const classnames = this.state.fadeIn ? "fadeIn" : "fadeOut";
         return(
         <div className = {classnames}>
-            <Image source = {this.state.imagesource} height="auto" width="25%"/>
+            <Image source = {this.state.imagesource}/>
         </div>
         );
     }
@@ -157,6 +147,8 @@ class ChangingDiv extends React.Component{
   const classnames = this.state.fadeIn ? "fadeIn details" : "fadeOut details";
 
         return(
+        <div className="carousel">
+            <label htmlFor="btn1">&#x25C0;</label>
             <div className = "changingdiv-wrapper">
 
                 <h4 className = {"skills-title"}>{this.state.titles[this.divcount]}</h4>
@@ -166,32 +158,33 @@ class ChangingDiv extends React.Component{
                 </div>
                 
                 <div className = "buttons-wrapper">
-                    <button className="btn1" onClick={this.manualPrevDiv}>&lt;</button>
-                    <button className="btn2" onClick={this.manualNextDiv}>&gt;</button>
+                    <button className="btn1" id="btn1" onClick={this.manualPrevDiv}/>
+                    <button className="btn2" id="btn2" onClick={this.manualNextDiv}/>
                 </div>
             </div>
+            <label htmlFor="btn2">&#x25B6;</label>
+        </div>
         )
-    }
+    };
 }
 
 function App(){
     return (
     <div className="webPage">
         <div className="header">
-            <Header text="Alexander Quatrini"/>
-            <Paragraph text="Passionate, efficient, and creative development."/>
+            <h1>Alexander Quatrini</h1>
+            <p>Passionate, efficient, and creative development.</p>
         </div>
 
         <div className="navbar">
-            <Link destination="#" name="About Me"/>
-            <Link destination="#" name="Skills"/>
-            <Link destination="#" name="Projects"/>
-            <Link destination="#" name="Contact Me"/>
+            <a href="#">About Me</a>
+            <a href="#">My Skills</a>
+            <a href="#">Projects</a>
+            <a href="#">Contact Me</a>
         </div>
 
-        <div className="imageCarousel">
-            <ChangingImage images="media/src1.png,media/src2.png,media/src3.png" startimagesource = "media/src3.png"/>
-        </div>
+        <div className="gradient-image"/>
+
         <div className = "header-wrapper">
             <div className="sub-header">
                 <BodyHeader text="ABOUT ME"/>

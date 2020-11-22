@@ -64,10 +64,10 @@ li{
     font-size: 25px;
 }
 
-.imageCarousel{
-    margin-left: 5%;
-    margin-right: 5%;
-    text-align: center;
+.gradient-image{
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)), url(../media/back-image.png);
+    background-size: cover;
 }
 
 .fadeIn{
@@ -85,12 +85,12 @@ li{
     width: 250px;
     background-color: #0000A0;
     display: inline-flex;
+    flex-direction: column;
     border-radius:50%;
     color: #ffffff;
     overflow-x: hidden;
     overflow-y: scroll;
     justify-content: center;
-    align-items: center;
 }
 
 .details ul{
@@ -174,19 +174,27 @@ li{
 }
 
 .buttons-wrapper button{
-    border-radius: 50%;
-    border-style: none;
-    display: inline-block;
-    font-size: 20px;
-    height: 30px;
-    width: 30px;
-    background-color: #aaaaaa;
+    display: none;
 }
 
-.btn1{
-    float: left;
+.changingdiv-wrapper{
+    flex: 5;
 }
 
-.btn2{
-    float: right;
+.carousel{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+
+label:hover{
+    color: gray;
 }
