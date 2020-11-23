@@ -32,6 +32,72 @@ function UnorderedList(props)
   );
 }
 
+function AboutMe(props){
+    return(
+        <div className="about-content">
+            <h1 id="aboutme">About Me</h1>
+            <div className="floating-content">
+            
+                <ChangingImage images="media/niu.png, media/src2.jpeg, media/src1.jpeg" startimagesource="media/src1.jpeg"/>
+            </div>
+            
+            <p>    My name is Alexander Quatrini, I am a recent graduate of Northern Illinois University, looking for an entry level software developer position.
+                Ideally, I would like to have a position as a front end or full stack developer, but I am skilled in many types of programming languages and frameworks.
+                (For a detailed list go to <a href="#skills">My Skills</a>). 
+            </p>
+
+            <h3>Personal Life</h3>
+            <p>
+                BLAH BLAH
+            </p>
+
+            <h3>Hobbies</h3>
+            <p>
+                BLAH BLAH
+            </p>
+        </div>
+    );
+}
+
+function Intro(props){
+    return(
+        <div className="gradient-image">
+            <div className="content">
+                <h1 className="fade">Hello. Welcome to my online resume.</h1>
+                <h2 className="fade">Skip to whichever section you'd like by clicking a link, or scroll down to continue.</h2>
+                
+                <div className="intro-navbar">
+                    <a className="fade once" href="#aboutme">About Me</a>
+                    <a className="fade once" href="#skills">My Skills</a>
+                    <a className="fade once" href="#projects">My Projects</a>
+                    <a className="fade once" href="#contactme">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function Navbar(props)
+{
+    return(
+    <div className="navbar">
+            <a href="#aboutme">About Me</a>
+            <a href="#skills">My Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contactme">Contact Me</a>
+    </div>
+    );
+}
+
+function Header(props){
+    return(
+        <div className="header">
+            <h1 id="top">Alexander Quatrini</h1>
+            <p>Passionate, Efficient, and Creative Development</p>
+        </div>
+    );
+}
+
 class ChangingImage extends React.Component{
     constructor(props){
         super(props);
@@ -171,41 +237,18 @@ class ChangingDiv extends React.Component{
 function App(){
     return (
     <div className="webPage">
-        <div className="header">
-            <h1>Alexander Quatrini</h1>
-            <p>Passionate, efficient, and creative development.</p>
-        </div>
-
-        <div className="navbar">
-            <a href="#">About Me</a>
-            <a href="#">My Skills</a>
-            <a href="#">Projects</a>
-            <a href="#">Contact Me</a>
-        </div>
-
+        <a className="return-to-top" href="#root">back to top</a>
+        <Header/>
+        <Navbar/>
+        <Intro/>
+        <AboutMe/>
         <div className="gradient-image"/>
-
-        <div className = "header-wrapper">
-            <div className="sub-header">
-                <BodyHeader text="ABOUT ME"/>
-            </div>
-        </div>
-
-        <div className="about-me-wrapper">
-
-        </div>  
-
-        <div className = "header-wrapper">
-            <div className="sub-header">
-                <BodyHeader text="MY SKILLS"/>
-            </div>
-        </div>
         
-        <div className = "list-wrapper">
-            <ChangingDiv lists = {[["Java", "Javascript", "React JS", "HTML", "CSS", "SQL", "PHP"], 
-            ["C++", "C#", ".NET", "Python"], ["Swift", "Android Studio", "XCode"], 
+        <div className = "list-wrapper" id="skills">
+            <ChangingDiv lists = {[["Javascript", "React JS", "HTML", "CSS", "SQL", "PHP"], 
+            ["C++", "C#", "Java", ".NET", "Python"], ["Swift", "Android Studio", "XCode"], 
             ["Github", "XAMPP", "Visual Studio", "vim", "Sublime Text", "Eclipse"], ["Windows", "Unix"]]} 
-            titles = {["Web Development", "Systems Development", "Mobile Development", "Tools", "Misc."]}/>
+            titles = {["Web Development", "Software Development", "Mobile Development", "Tools", "Misc."]}/>
         </div>
     </div>
     );

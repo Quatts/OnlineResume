@@ -1,29 +1,57 @@
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.return-to-top{
+    opacity: 0;
+    position: fixed;
+    padding: 15px;
+    top: 20px;
+    right: 20px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: black;
+    background-color: #29c7ac;
+    z-index: 99;
+    transition: opacity .75s;
+    border: 2px solid black;
+}
+
+.return-to-top.visible{
+    opacity: 1;
+}
+
+.return-to-top:hover{
+    background-color: #BC6FF1;
+    color: black;
 }
 
 .header{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 25px;
     padding: 80px;
-    background-color: #A470DD;
-    color: #260065;
+    background-color: #111111;
+    color: #892cdc;
     text-align: center;
 }
 
 .header p{
-    color: #462085;
+    color: #52057b;
 }
 
 .navbar{
     overflow: hidden;
-    background-color: #333
+    background-color: #52057b;
 }
 
 .navbar a{
     float: left;            /* Links are placed on the left of the page */
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 20px;    /*Add padding to the links */
     text-decoration: none; /*Remove the underline on links*/
@@ -34,7 +62,7 @@ body{
 }
 
 .navbar a:hover{
-    background-color: #dddddd;
+    background-color: #bc6ff1;
     color: black;
 }
 
@@ -65,9 +93,139 @@ li{
 }
 
 .gradient-image{
-    height: 100vh;
-    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)), url(../media/back-image.png);
+    height: 125vh;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)), url(../media/back-image.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
+    padding-top: 35%;
+    text-align: center;
+}
+
+.content{
+    color: white;
+    height: 50%;
+}
+
+.content h1{
+    color: white;
+    border: 3px solid black;
+    background: black;
+    padding: 15px;
+    margin: auto;
+    margin-bottom: 100px;
+    display: inline-block;
+}
+
+.content h2{
+    color: white;
+    border: 3px solid black;
+    background: black;
+    padding: 15px;
+    margin: auto;
+    display: inline-block;
+}
+
+.content p{
+    font-size: 24px;
+    color: white;
+    border: 3px solid black;
+    background: black;
+    margin: auto;
+    margin-bottom: 100px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.intro-navbar{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+.intro-navbar a{
+    color: black;
+    margin: auto;
+    margin-top: 100px;
+    text-decoration: none;
+    border: 2px solid black;
+    background: #52057b;
+    font-size: 24px;
+    padding: 20px;
+}
+
+.intro-navbar a:hover{
+    background-color: #bc6ff1; 
+}
+
+.fade.visible{
+    opacity: 1;
+    transform: translate(0,0);
+}
+
+.fade{
+    opacity: 0;
+    transform: translate(0, 20px);
+    transition: opacity 1.5s, transform 1.5s;
+}
+
+a.fade{
+    opacity: 0;
+    transform: translate(0,100px);
+    transition: opacity 1.5s, transform 1.5s;
+}
+
+a.fade.visible{
+    opacity: 1;
+    transform: translate(0,0);
+}
+
+.about-content .floating-content{
+    width: 25%;
+    float: right;
+}
+
+.about-content h1{
+    margin-bottom: 25px;
+    padding: 15px;
+    background-image: linear-gradient(to right, rgba(255,255,255,0), 10%, rgba(255,255,255,1));
+    color: #52057b;
+    display: inline-block;
+}
+
+.about-content img{
+    margin: 30px;
+    max-height: 250px;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.about-content p{
+    color: #892cdc;
+    margin-left: 15px;
+    margin-bottom: 0px;
+}
+
+.about-content h3{
+    color: #52057b;
+    margin-left: 15px;
+}
+
+.about-content a{
+    color: white;
+}
+
+.about-content a:hover{
+    color: gray;
+}
+
+.about-content{
+    width: 100%;
+    background-color: #111111;
+    color: white;
 }
 
 .fadeIn{
@@ -83,11 +241,11 @@ li{
 .details{
     height: 250px;
     width: 250px;
-    background-color: #0000A0;
+    background-color: #29c7ac;
     display: inline-flex;
     flex-direction: column;
     border-radius:50%;
-    color: #ffffff;
+    color: #000000;
     overflow-x: hidden;
     overflow-y: scroll;
     justify-content: center;
@@ -110,6 +268,7 @@ li{
     overflow-x: hidden;
     white-space: nowrap;
     text-align: center;
+    background-color: #111111
 }
 
 .fadeIn.details{
@@ -189,6 +348,7 @@ li{
 }
 
 label{
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -197,4 +357,8 @@ label{
 
 label:hover{
     color: gray;
+}
+
+h4{
+    color: white;
 }
