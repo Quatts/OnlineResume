@@ -1,8 +1,28 @@
-$(document).ready(function(){
+$(function(){
   $('a.fade.once').each(function(){
-    var delay=$(this).index()
-    $(this).css('transition-delay', delay*.5 + 's')
+    var delay=$(this).index();
+    $(this).css('transition-delay', delay*.5 + 's');
   })
+
+  $('.radio-unfocus .focused-out').click(function(){
+    
+    var targetHorizontal = $('.main-focus').position().left;
+  
+    var targetVertical = $('.main-focus').position().top;
+
+    console.log(targetHorizontal)
+
+    console.log($(this).position().left)
+
+    var horizontal = targetHorizontal - $(this).offset().left;
+  
+    var vertical = targetVertical - $(this).offset().top;
+  
+    console.log(horizontal + " " + vertical);
+  
+    $(this).animate({top: vertical + "px", left: horizontal + "px"}, 1500)
+  })
+
 })
 
 $(document).on("scroll", function () {

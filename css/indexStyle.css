@@ -3,7 +3,8 @@ html{
 }
 
 body{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: monospace;
+    font-size: 24px;
 }
 
 .return-to-top{
@@ -26,12 +27,12 @@ body{
 }
 
 .return-to-top:hover{
-    background-color: #BC6FF1;
+    background-color: #3797a4;
     color: black;
 }
 
 .header{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: monospace;
     font-size: 25px;
     padding: 80px;
     background-color: #111111;
@@ -44,21 +45,17 @@ body{
 }
 
 .navbar{
+    text-align: center;
     overflow: hidden;
     background-color: #52057b;
 }
 
 .navbar a{
-    float: left;            /* Links are placed on the left of the page */
-    display: block;
+    display: inline-block;
     color: black;
     text-align: center;
     padding: 14px 20px;    /*Add padding to the links */
     text-decoration: none; /*Remove the underline on links*/
-}
-
-.navbar a.right{
-    float: right;
 }
 
 .navbar a:hover{
@@ -66,12 +63,16 @@ body{
     color: black;
 }
 
-/*MY SKILLS*/
-.header-wrapper{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background-image: url("../media/purple-swoosh.png");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+.skills-content{
+    background-color: #111111;
+}
+
+.skills-content h1{
+    margin-bottom: 25px;
+    padding: 15px;
+    background-image: linear-gradient(to right, rgba(255,255,255,0), 10%, rgba(255,255,255,1));
+    color: #52057b;
+    display: inline-block;
 }
 
 body{
@@ -99,7 +100,18 @@ li{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding-top: 35%;
+    padding-top: 15%;
+    text-align: center;
+}
+
+.gradient-image-25{
+    height: 25vh;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)), url(../media/back-image.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 15%;
     text-align: center;
 }
 
@@ -110,8 +122,8 @@ li{
 
 .content h1{
     color: white;
-    border: 3px solid black;
-    background: black;
+    /*border: 3px solid black;
+    background: black;*/
     padding: 15px;
     margin: auto;
     margin-bottom: 100px;
@@ -120,8 +132,8 @@ li{
 
 .content h2{
     color: white;
-    border: 3px solid black;
-    background: black;
+    /*border: 3px solid black;
+    background: black;*/
     padding: 15px;
     margin: auto;
     display: inline-block;
@@ -140,6 +152,7 @@ li{
 }
 
 .intro-navbar{
+    text-align: center;
     display: flex;
     flex-flow: row;
     justify-content: center;
@@ -183,8 +196,10 @@ a.fade.visible{
 }
 
 .about-content .floating-content{
-    width: 25%;
+    width: 15%;
+    overflow: hidden;
     float: right;
+    text-align: right;
 }
 
 .about-content h1{
@@ -196,7 +211,6 @@ a.fade.visible{
 }
 
 .about-content img{
-    margin: 30px;
     max-height: 250px;
     max-width: 100%;
     width: auto;
@@ -206,10 +220,14 @@ a.fade.visible{
 .about-content p{
     color: #892cdc;
     margin-left: 15px;
+    margin-right: 15px;
     margin-bottom: 0px;
 }
 
 .about-content h3{
+    display: inline-block;
+    padding: 10px;
+    background-image: linear-gradient(to right, rgba(255,255,255,0), 10%, rgba(255,255,255,1));
     color: #52057b;
     margin-left: 15px;
 }
@@ -228,13 +246,34 @@ a.fade.visible{
     color: white;
 }
 
+/*.lists{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.prev-list{
+    float: left;
+    zoom: 0.5;
+}
+
+.next-list{
+    float: right;
+    zoom: 0.5;
+}
+
+.current-list{
+    float:left;
+}*/
+
 .fadeIn{
     transition: opacity 0.5s;
     opacity: 1;
 }
 
 .fadeOut{
-    transition: opacity 0.5s;
+    transition: all 0.5s;
     opacity : 0;
 }
 
@@ -242,23 +281,73 @@ a.fade.visible{
     height: 250px;
     width: 250px;
     background-color: #29c7ac;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     border-radius:50%;
     color: #000000;
     overflow-x: hidden;
     overflow-y: scroll;
     justify-content: center;
+    margin: auto;
 }
 
 .details ul{
-    margin-left: 0px;
     padding-inline-start: 0px;
     list-style: none;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-block-start: 0px;
-    margin-block-end: 0px;
+}
+
+ul.details{
+    padding-inline-start: 0px;
+    list-style: none;
+}
+
+.radio-wrapper{
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    margin: auto;
+}
+
+.radio-focus{
+    position: relative;
+    flex: 3;
+    opacity: 1;
+}
+
+.radio-unfocus{
+    display: flex;
+    flex-flow: column;
+}
+
+.radio-unfocus .small-focus{
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: opacity 1.5s;
+}
+
+.radio-unfocus .focused-out{
+    position: relative;
+    margin: 0px 10px;
+    opacity: 0.5;
+    transition: opacity 1.5s;
+}
+
+.radio-unfocus .focused-out:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.option{
+    margin: auto;
+    color: white;
+    cursor: pointer;
+}
+
+.option ul{
+    list-style: none;
 }
 
 .list-wrapper{
@@ -269,6 +358,14 @@ a.fade.visible{
     white-space: nowrap;
     text-align: center;
     background-color: #111111
+}
+
+.skills-content p{
+    color: white;
+}
+
+.skills-content p:last-child{
+    margin-bottom: 0px;
 }
 
 .fadeIn.details{
@@ -341,12 +438,34 @@ a.fade.visible{
 }
 
 .carousel{
-    width: 50%;
+    width: 100%;
     margin: auto;
     display: flex;
     justify-content: space-evenly;
 }
 
+/*.titles{
+    text-align: center;
+    display: flex;
+}
+
+.skills-title{
+    flex: 2;
+    display: inline-block;
+    width: 250px;
+}
+
+.prev-skills-title{
+    flex: 1;
+    display: inline-block;
+    width: 125px;
+}
+
+.next-skills-title{
+    flex: 1;
+    display: inline-block;
+    width: 125px;
+}*/
 label{
     color: white;
     display: flex;
