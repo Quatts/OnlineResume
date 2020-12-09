@@ -305,7 +305,7 @@ ul.details{
     width: 50%;
     text-align: center;
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
     align-items: center;
     margin: auto;
 }
@@ -318,21 +318,20 @@ ul.details{
 
 .radio-unfocus{
     display: flex;
-    flex-flow: column;
+    flex-flow: row;
 }
 
 .radio-unfocus .small-focus{
     position: relative;
-    margin-left: 10px;
-    margin-right: 10px;
-    transition: opacity 1.5s;
+    margin: 0px 40px;
+    transition: opacity 1s;
 }
 
 .radio-unfocus .focused-out{
     position: relative;
-    margin: 0px 10px;
+    margin: 0px 40px;
     opacity: 0.5;
-    transition: opacity 1.5s;
+    transition: opacity 1s;
 }
 
 .radio-unfocus .focused-out:hover{
@@ -347,6 +346,7 @@ ul.details{
 }
 
 .option ul{
+    padding: 0px;
     list-style: none;
 }
 

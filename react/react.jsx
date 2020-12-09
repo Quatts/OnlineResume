@@ -138,15 +138,18 @@ class RadioSelectDiv extends React.Component{
     constructor(props)
     {
         super(props);
-        this.state = {lists: this.props.lists, titles: this.props.titles, focus: this.props.focus};
-        this.divcount = 0;
+        this.state = {id:0};
     
         this.selectDiv = this.selectDiv.bind(this);
+        this.updateFocus = this.updateFocus.bind(this);
+        this.unfocusedListItems = [];
+        this.listItems = [];
     }
 
     componentDidMount(){
-        this.timerID = setInterval(() => this.selectDiv(this.divcount), 5000);
         this.setState({id:0});
+        this.updateFocus();
+        this.timerID = setInterval(() => this.selectDiv(this.state.id+1), 5000);
     }
 
     componentWillUnmount(){
@@ -156,7 +159,7 @@ class RadioSelectDiv extends React.Component{
     onUpdateItem = i => {
 
         this.setState(state => {
-            const focus = state.focus.map(item => false);
+            const focus = this.props.focus.map(item => false);
        
             return {
               focus,
@@ -164,7 +167,7 @@ class RadioSelectDiv extends React.Component{
           });
 
         this.setState(state => {
-            const focus = state.focus.map((item, j) => {
+            const focus = this.props.focus.map((item, j) => {
                 if(j===i)
                 {
                     return !item;
@@ -178,48 +181,55 @@ class RadioSelectDiv extends React.Component{
         });
     };
 
-    selectDiv(){
+    updateFocus(){
 
-        this.setState({focused: false});
+        this.unfocusedListItems = [];
+        this.listItems = [];
 
-        this.divcount++;
-
-        if(this.divcount >= this.state.lists.length){
-            this.divcount = 0;
-        }
-
-        this.timer = setTimeout(() => {this.onUpdateItem(this.divcount), this.setState({focused: true})}, 500);
-    }
-
-    render(){
-
-        var unfocusedListItems = [];
-
-        for(var i = 0; i < this.state.lists.length; i++){
-            if(i != this.divcount){
-                unfocusedListItems.push(<div className="focused-out option"><ul><li key={i.toString() + " unfocus"}> &#x2022; {this.state.titles[i]} &#x2022;</li></ul></div>);
+        for(var i = 0; i < this.props.lists.length; i++){
+            if(i != this.state.id){
+                this.unfocusedListItems.push(<div onClick={() => this.selectDiv(i)} className="focused-out option"><ul><li key={i.toString() + " unfocus"}> &#x2022; {this.props.titles[i]} &#x2022;</li></ul></div>);
         }
             else{
-                unfocusedListItems.push(<div className="small-focus option"><ul><li key={i.toString() + " small-focus"}>&#x2022; {this.state.titles[i]} &#x2022;</li></ul></div>);
+                this.unfocusedListItems.push(<div className="small-focus option"><ul><li key={i.toString() + " small-focus"}>&#x2022; {this.props.titles[i]} &#x2022;</li></ul></div>);
             }
-    }
+        }
 
-        const listItems = this.state.lists[this.divcount].map((number) =>
+        this.listItems = this.props.lists[this.state.id].map((number) =>
     <li key={number.toString() + " focused"}>
       {number}
     </li>);
+    }
+
+    selectDiv(value){
+
+        this.setState({id: value, focused: false});
+
+        if(this.state.id >= this.props.lists.length)
+        {
+            this.setState({id: 0});
+        }
+
+        this.updateFocus();
+
+        this.timer = setTimeout(() => {this.onUpdateItem(this.state.id), this.setState({focused: true})}, 500);
+
+    }
+
+    render(){
 
         var classes = this.state.focused ? "focused-in details main-focus" : "focused-out details main-focus";
 
         return(
             <div className="radio-wrapper">
+                    <div className="radio-unfocus">
+                        {this.unfocusedListItems}
+                    </div>
+
                     <div className="radio-focus">
                         <ul className={classes}>
-                            {listItems}
+                            {this.listItems}
                         </ul>
-                    </div>
-                    <div className="radio-unfocus">
-                        {unfocusedListItems}
                     </div>
             </div>
         );
@@ -416,13 +426,15 @@ class BackToTop extends React.Component{
 
     handleScroll(){
 
-        if(!this.state.visible && (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150))
+        if(document.body.scrollTop > 150 || document.documentElement.scrollTop > 150)
         {
-            this.setState({visible: true});
+            if(!this.state.visible)
+                this.setState({visible: true});
         }
-        else if((document.body.scrollTop || document.body.scrollTop) < 150)
+        else
         {
-            this.setState({visible: false});
+            if(this.state.visible)
+                this.setState({visible: false});
         }
     }
 
