@@ -318,56 +318,6 @@ class ChangingDiv extends React.Component{
     };
 }
 
-class FadeInLink extends React.Component{
-
-    constructor(props)
-    {
-        super(props);
-        this.state = {inViewPort: false};
-        this.once = props.once;
-        this.text = props.text;
-        this.destination = props.destination;
-        this.delay = props.delay;
-        
-        this.handleScroll = this.handleScroll.bind(this);
-
-        this.ref = React.createRef();
-    }
-
-    componentDidMount(){
-        window.addEventListener('scroll', this.handleScroll);
-    }
-
-    componentWillUnmount(){
-        window.removeEventListener('scroll', this.handleScroll);
-    }
-
-    handleScroll(){
-        var rect = this.ref.current.getBoundingClientRect();
-        
-        if(!this.state.inViewPort)
-        {
-
-            if(rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)){
-                this.setState({inViewPort: true});
-            }
-        }
-        else if(!this.once && rect.bottom > (window.innerHeight || document.documentElement.clientHeight)){
-            this.setState({inViewPort: false});
-        }
-    }
-
-    render(){
-
-        var classnames = this.state.inViewPort ? "visible " : "";
-        var classnames = this.once ? classnames+"fade once" : classnames+"fade"
-
-        return(
-            <a ref={this.ref} className={classnames} href={this.destination} style={{transitionDelay: this.delay}}>{this.text}</a>
-        )
-    };
-}
-
 class BackToTop extends React.Component{
     constructor(props){
         super(props);
@@ -408,14 +358,22 @@ class BackToTop extends React.Component{
     }
 }
 
-class FadeInHeader extends React.Component{
+function FadeInComponent(props){
+    const CustomType = `${props.type}`;
+    return(
+        <FadeIn once={props.once} delay={props.delay}>
+            <CustomType href={props.destination}>{props.text}</CustomType>
+        </FadeIn>
+    );
+}
 
-    constructor(props)
-    {
+  
+
+class FadeIn extends React.Component{
+    constructor(props){
         super(props);
         this.state = {inViewPort: false};
         this.once = props.once;
-        this.text = props.text;
         this.delay = props.delay;
         
         this.handleScroll = this.handleScroll.bind(this);
@@ -442,7 +400,7 @@ class FadeInHeader extends React.Component{
             }
         }
         else if(!this.once && rect.bottom > (window.innerHeight || document.documentElement.clientHeight)){
-            this.setState({inViewPort: false});
+                this.setState({inViewPort: false});
         }
     }
 
@@ -450,26 +408,24 @@ class FadeInHeader extends React.Component{
 
         var classnames = this.state.inViewPort ? "visible " : "";
         var classnames = this.once ? classnames+"fade once" : classnames+"fade"
-
         return(
-            <h2 ref={this.ref} className={classnames}>{this.text}</h2>
+            <div ref={this.ref} style={{transitionDelay: this.delay}} className={classnames}>{this.props.children}</div>
         )
     };
 }
-
 function Intro(props){
     return(
         <div className="gradient-image">
             <div className="content">
                 <h1>Hello. Welcome to my online resume.</h1>
-                <FadeInHeader once={false} text="Click a link to skip to a specific section, or keep scrolling down to continue." delay="0s"/>
+                <FadeInComponent once={false} text="Click a link to skip to a specific section, or keep scrolling down to continue." delay="0s" type="h1"/>
                 
                 <div className="intro-navbar">
-                    <FadeInLink once={true} destination="#aboutme" text="About Me" delay="0s"/>
-                    <FadeInLink once={true} destination="#skills" text="My Skills" delay="0.5s"/>
-                    <FadeInLink once={true} destination="#qualities" text="My Qualities" delay="1s"/>
-                    <FadeInLink once={true} destination="#projects" text="My Projects" delay="1.5s"/>
-                    <FadeInLink once={true} destination="#contactme" text="Contact Me" delay="2s"/>
+                    <FadeInComponent once={true} destination="#aboutme" text="About Me" delay="0s" type="a"/>
+                    <FadeInComponent once={true} destination="#skills" text="My Skills" delay="0.5s" type="a"/>
+                    <FadeInComponent once={true} destination="#qualities" text="My Qualities" delay="1s" type="a"/>
+                    <FadeInComponent once={true} destination="#projects" text="My Projects" delay="1.5s" type="a"/>
+                    <FadeInComponent once={true} destination="#contactme" text="Contact Me" delay="2s" type="a"/>
                 </div>
             </div>
         </div>
@@ -502,7 +458,9 @@ function Qualities(props){
     return(
         <div className="qualities-content" id="qualities">
             <h1>My Qualities</h1>
-            <ChangingDiv titles={["passion", "two", "three"]} descriptions={["one", "two desc", "three edesc"]}/>
+            <FadeInComponent delay="0s" text="Passion" type="h2"/>
+            <FadeInComponent delay="0s" text="Detail-Oriented" type="h2"/>
+            <FadeInComponent delay="0s" text="Team Player" type="h2"/>
         </div>
     )
 }
