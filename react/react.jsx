@@ -470,6 +470,34 @@ function Qualities(props){
     )
 }
 
+function Projects(props){
+    return(
+        <div className="projects-content" id="projects">
+            <h1>My Projects</h1>
+            <div className="project-buttons">
+                <ProjectButton destination="https://www.github.com" title="Stock Price Predictor" src="media/python-logo.png"/>
+                <ProjectButton destination="https://www.github.com" title="Online Resume/Cover Letter" src="media/react-js.png"/>
+                <ProjectButton destination="https://www.github.com" title="Sample Project 3" src="media/src1.jpeg"/>
+                <ProjectButton destination="https://www.github.com" title="Sample Project 4" src="media/src1.jpeg"/>
+            </div>
+        </div>
+    )
+}
+
+function ProjectButton(props)
+{
+    let imageSource = props.src;
+    return(
+    
+        <div className="project-preview-wrapper" style={{backgroundImage : "url("+imageSource+"), linear-gradient(to bottom,rgba(255,255,255,0), rgb(255,255,255))"}}>
+            <form action={props.destination}>
+                <button id="project-button" type="submit">{props.title}</button>
+                <label className="project-preview" htmlFor="project-button">{props.title}</label>
+            </form>
+        </div>
+    )
+}
+
 function App(){
     return (
     <div className="webPage">
@@ -482,6 +510,7 @@ function App(){
         <Skills/>
         <div className="gradient-image"></div>
         <Qualities/>
+        <Projects/>
     </div>
     );
 }

@@ -502,10 +502,6 @@ label{
     flex: 1;
 }
 
-label:hover{
-    color: gray;
-}
-
 h4{
     color: white;
 }
@@ -517,3 +513,45 @@ h4{
 .fade p{
     color: white;
 }
+
+.projects-content{
+    background-color: #111111;
+    text-align: center;
+}
+
+.projects-content h1{
+    padding: 15px;
+    background-image: linear-gradient(to right, rgba(255,255,255,0), 10%, rgba(255,255,255,1), 90%, rgba(255,255,255,0));
+    color: #52057b;
+    display: inline-block;
+    margin: auto;
+    margin-top: 0px;
+    margin-bottom: 100px;
+
+}
+
+#project-button{
+    display: none;
+}
+
+.project-buttons{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.project-preview-wrapper{
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 150px;
+    width: 45%;
+    margin:auto;
+    margin-bottom: 50px;
+    transform: translate(0,10px);
+    transition: all 1s;
+}
+
+.project-preview-wrapper:hover{
+    color: #ffffff;
+    transform: translate(0,-10px);
+}
+
