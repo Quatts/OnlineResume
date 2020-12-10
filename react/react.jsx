@@ -88,6 +88,7 @@ function Header(props){
         <div className="header">
             <h1 id="top">Alexander Quatrini</h1>
             <p>Passionate, Efficient, and Creative Development</p>
+            <p>&#x2B07; Scroll Down &#x2B07;</p>
         </div>
     );
 }
@@ -141,14 +142,12 @@ class RadioSelectDiv extends React.Component{
         this.state = {id:0};
     
         this.selectDiv = this.selectDiv.bind(this);
-        this.updateFocus = this.updateFocus.bind(this);
         this.unfocusedListItems = [];
         this.listItems = [];
     }
 
     componentDidMount(){
         this.setState({id:0});
-        this.updateFocus();
         this.timerID = setInterval(() => this.selectDiv(this.state.id+1), 5000);
     }
 
@@ -181,15 +180,32 @@ class RadioSelectDiv extends React.Component{
         });
     };
 
-    updateFocus(){
+    selectDiv(value){
+
+        clearInterval(this.timerID);
+        this.timerID = setInterval(() => this.selectDiv(this.state.id+1), 5000);
+
+
+        if(value >= this.props.lists.length)
+        {
+            value = 0;
+        }
+
+        this.setState({id: value});
+
+        this.timer = setTimeout(() => {this.onUpdateItem(this.state.id), this.setState({focused: true})}, 500);
+
+    }
+
+    render(){
 
         this.unfocusedListItems = [];
         this.listItems = [];
 
-        for(var i = 0; i < this.props.lists.length; i++){
-            if(i != this.state.id){
+        for(let i = 0; i < this.props.lists.length; i++){
+            if(i !== this.state.id){
                 this.unfocusedListItems.push(<div onClick={() => this.selectDiv(i)} className="focused-out option"><ul><li key={i.toString() + " unfocus"}> &#x2022; {this.props.titles[i]} &#x2022;</li></ul></div>);
-        }
+            }
             else{
                 this.unfocusedListItems.push(<div className="small-focus option"><ul><li key={i.toString() + " small-focus"}>&#x2022; {this.props.titles[i]} &#x2022;</li></ul></div>);
             }
@@ -199,24 +215,6 @@ class RadioSelectDiv extends React.Component{
     <li key={number.toString() + " focused"}>
       {number}
     </li>);
-    }
-
-    selectDiv(value){
-
-        this.setState({id: value, focused: false});
-
-        if(this.state.id >= this.props.lists.length)
-        {
-            this.setState({id: 0});
-        }
-
-        this.updateFocus();
-
-        this.timer = setTimeout(() => {this.onUpdateItem(this.state.id), this.setState({focused: true})}, 500);
-
-    }
-
-    render(){
 
         var classes = this.state.focused ? "focused-in details main-focus" : "focused-out details main-focus";
 
@@ -240,8 +238,8 @@ class ChangingDiv extends React.Component{
     constructor(props)
     {
         super(props);
-        this.state = {lists: this.props.lists, titles: this.props.titles};
         this.divcount = 0;
+        this.state = {fadeIn: true};
         this.manualNextDiv = this.manualNextDiv.bind(this);
         this.manualPrevDiv = this.manualPrevDiv.bind(this);
     }
@@ -262,7 +260,7 @@ class ChangingDiv extends React.Component{
 
         if(this.divcount < 0)
         {
-            this.divcount = this.state.lists.length-1;
+            this.divcount = this.props.descriptions.length-1;
         }
 
         this.timer = setTimeout(() => {this.setState({fadeIn:true})}, 500);
@@ -273,7 +271,7 @@ class ChangingDiv extends React.Component{
 
         this.divcount++;
 
-        if(this.divcount >= this.state.lists.length)
+        if(this.divcount >= this.props.descriptions.length)
         {
             this.divcount = 0;
         }
@@ -286,7 +284,7 @@ class ChangingDiv extends React.Component{
 
         this.divcount++;
 
-        if(this.divcount >= this.state.lists.length)
+        if(this.divcount >= this.props.descriptions.length)
         {
             this.divcount = 0;
         }
@@ -296,54 +294,17 @@ class ChangingDiv extends React.Component{
 
     render(){
 
-        var prevList;
-        var nextList;
-
-        if(this.state.lists.length - 1 == this.divcount)
-        {
-            this.nextList = 0;
-        }
-        else{
-            this.nextList = this.divcount + 1;
-        }
-
-        if(this.divcount == 0)
-        {
-            this.prevList = this.state.lists.length - 1;
-        }
-        else{
-            this.prevList = this.divcount - 1;
-        }
-
-        const listItems = this.state.lists[this.divcount].map((number) =>
-    <li key={number.toString()}>
-      {number}
-    </li>
-  );
-
-        const prevListItems = this.state.lists[this.prevList].map((number) => 
-    <li key={number.toString()}>
-      {number}
-    </li>
-  );
-
-        const nextListItems = this.state.lists[this.nextList].map((number) => 
-    <li key={number.toString()}>
-        {number}
-    </li>
-    );
-
-  const classnames = this.state.fadeIn ? "fadeIn details" : "fadeOut details";
+  const classnames = this.state.fadeIn ? "fadeIn" : "fadeOut";
 
         return(
         <div className="carousel">
             <label htmlFor="btn1">&#x25C0;</label>
             <div className = "changingdiv-wrapper">
                 
-                <h4 className = {"skills-title"}>{this.state.titles[this.divcount]}</h4>
+                <h4 className = {"qualities-title"}>{this.props.titles[this.divcount]}</h4>
 
                 <div className = {classnames}>
-                    <ul>{listItems}</ul>
+                    <p>{this.props.descriptions[this.divcount]}</p>
                 </div>
 
                 <div className = "buttons-wrapper">
@@ -455,7 +416,6 @@ class FadeInHeader extends React.Component{
         this.state = {inViewPort: false};
         this.once = props.once;
         this.text = props.text;
-        this.destination = props.destination;
         this.delay = props.delay;
         
         this.handleScroll = this.handleScroll.bind(this);
@@ -507,8 +467,9 @@ function Intro(props){
                 <div className="intro-navbar">
                     <FadeInLink once={true} destination="#aboutme" text="About Me" delay="0s"/>
                     <FadeInLink once={true} destination="#skills" text="My Skills" delay="0.5s"/>
-                    <FadeInLink once={true} destination="#projects" text="My Projects" delay="1s"/>
-                    <FadeInLink once={true} destination="#contactme" text="Contact Me" delay="1.5s"/>
+                    <FadeInLink once={true} destination="#qualities" text="My Qualities" delay="1s"/>
+                    <FadeInLink once={true} destination="#projects" text="My Projects" delay="1.5s"/>
+                    <FadeInLink once={true} destination="#contactme" text="Contact Me" delay="2s"/>
                 </div>
             </div>
         </div>
@@ -521,18 +482,29 @@ function Skills(props){
         <div className="skills-content">
             <h1>My Skills</h1>        
         <div className = "list-wrapper" id="skills">
-            <RadioSelectDiv lists = {[["Javascript", "React JS", "HTML", "CSS", "SQL", "PHP", "jQuery"], 
+            <RadioSelectDiv lists = {[["JavaScript", "React JS", "HTML", "CSS", "SQL", "PHP", "jQuery"], 
             ["C++", "C#", "Java", ".NET", "Python"], ["Swift", "Android Studio", "XCode"], 
             ["Git", "XAMPP", "Visual Studio", "vim", "Sublime Text", "Eclipse"], ["Windows", "Unix"]]} 
             titles = {["Web", "Software", "Mobile", "Tools", "Misc."]} focus={[true,false,false,false,false]}/>
         </div>
-            <p>Web Development: DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
+            <p>Web Development: My favorite type of development. Front-end is specifically my favorite. This website uses most of the front end technologies listed including React,
+            HTML, and CSS.
+            </p>
             <p>Software Development: DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
             <p>Mobile Development: DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
             <p>Development Tools: DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
             <p>Miscellaneous: DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
         </div>
     );
+}
+
+function Qualities(props){
+    return(
+        <div className="qualities-content" id="qualities">
+            <h1>My Qualities</h1>
+            <ChangingDiv titles={["passion", "two", "three"]} descriptions={["one", "two desc", "three edesc"]}/>
+        </div>
+    )
 }
 
 function App(){
@@ -545,6 +517,8 @@ function App(){
         <div className="gradient-image-25"></div>
 
         <Skills/>
+        <div className="gradient-image"></div>
+        <Qualities/>
     </div>
     );
 }
