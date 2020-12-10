@@ -540,18 +540,25 @@ h4{
 }
 
 .project-preview-wrapper{
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 150px;
-    width: 45%;
     margin:auto;
+    width: 45%;
     margin-bottom: 50px;
     transform: translate(0,10px);
     transition: all 1s;
 }
 
+.project-preview-image{
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .project-preview-wrapper:hover{
     color: #ffffff;
     transform: translate(0,-10px);
+}
+
+.project-preview-wrapper label{
+    color: #892cdc
 }
 
