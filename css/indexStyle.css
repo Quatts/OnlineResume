@@ -106,7 +106,7 @@ li{
 }
 
 .gradient-image-25{
-    height: 25vh;
+    height: 25%;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)), url(../media/back-image.png);
     background-attachment: fixed;
     background-position: center;
@@ -175,7 +175,6 @@ li{
 
 .fade.visible{
     margin: auto;
-    margin-bottom: 100px;
     opacity: 1;
     transform: translate(0,0);
 }
@@ -508,5 +507,13 @@ label:hover{
 }
 
 h4{
+    color: white;
+}
+
+.fade h2:last-child{
+    margin-bottom: 0px;
+}
+
+.fade p{
     color: white;
 }

@@ -395,11 +395,11 @@ class FadeIn extends React.Component{
         if(!this.state.inViewPort)
         {
 
-            if(rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)){
+            if(rect.top <= (window.innerHeight || document.documentElement.clientHeight)){
                 this.setState({inViewPort: true});
             }
         }
-        else if(!this.once && rect.bottom > (window.innerHeight || document.documentElement.clientHeight)){
+        else if(!this.once && rect.top > (window.innerHeight || document.documentElement.clientHeight)){
                 this.setState({inViewPort: false});
         }
     }
@@ -459,8 +459,13 @@ function Qualities(props){
         <div className="qualities-content" id="qualities">
             <h1>My Qualities</h1>
             <FadeInComponent delay="0s" text="Passion" type="h2"/>
+            <FadeInComponent delay="0s" text="Passion" type="p" delay="0.5s"/>
+
             <FadeInComponent delay="0s" text="Detail-Oriented" type="h2"/>
+            <FadeInComponent delay="0s" text="Detail-Oriented" type="p" delay="0.5s"/>
             <FadeInComponent delay="0s" text="Team Player" type="h2"/>
+
+            <FadeInComponent delay="0s" text="Team Player" type="p" delay="0.5s"/>
         </div>
     )
 }
