@@ -475,10 +475,10 @@ function Projects(props){
         <div className="projects-content" id="projects">
             <h1>My Projects</h1>
             <div className="project-buttons">
-                <ProjectButton destination="https://github.com/Quatts/Model_Prediction" title="Stock Price Predictor" src="media/python-logo.png"/>
-                <ProjectButton destination="https://github.com/Quatts/OnlineResume/" title="Online Resume/Cover Letter" src="media/react-js.png"/>
-                <ProjectButton destination="https://www.github.com" title="Sample Project 3" src="media/src1.jpeg"/>
-                <ProjectButton destination="https://www.github.com" title="Sample Project 4" src="media/src1.jpeg"/>
+                <ProjectButton destination="https://github.com/Quatts/Model_Prediction" title="Stock Price Predictor" src="media/python-logo.png" id="project-one"/>
+                <ProjectButton destination="https://github.com/Quatts/OnlineResume/" title="Online Resume/Cover Letter" src="media/react-js.png" id="project-two"/>
+                <ProjectButton destination="https://www.github.com" title="Sample Project 3" src="media/src1.jpeg" id="project-three"/>
+                <ProjectButton destination="https://www.github.com" title="Sample Project 4" src="media/src1.jpeg" id="project-four"/>
             </div>
         </div>
     )
@@ -489,10 +489,10 @@ function ProjectButton(props)
     let imageSource = props.src;
     return(
     <div className="project-preview-wrapper">
-        <label className="project-preview" htmlFor="project-button">{props.title}</label>
+        <label className="project-preview" htmlFor={props.id}>{props.title}</label>
         <div className="project-preview-image" style={{backgroundImage : "url("+imageSource+"), linear-gradient(to bottom,rgba(255,255,255,0), rgb(255,255,255))"}}>
             <form action={props.destination}>
-                <button id="project-button" type="submit">{props.title}</button>
+                <button id={props.id} type="submit">{props.title}</button>
             </form>
         </div>
     </div>
