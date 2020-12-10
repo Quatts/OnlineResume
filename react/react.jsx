@@ -362,7 +362,7 @@ function FadeInComponent(props){
     const CustomType = `${props.type}`;
     return(
         <FadeIn once={props.once} delay={props.delay}>
-            <CustomType href={props.destination}>{props.text}</CustomType>
+            <CustomType href={props.destination} className={props.class}>{props.text}</CustomType>
         </FadeIn>
     );
 }
@@ -421,11 +421,11 @@ function Intro(props){
                 <FadeInComponent once={false} text="Click a link to skip to a specific section, or keep scrolling down to continue." delay="0s" type="h1"/>
                 
                 <div className="intro-navbar">
-                    <FadeInComponent once={true} destination="#aboutme" text="About Me" delay="0s" type="a"/>
-                    <FadeInComponent once={true} destination="#skills" text="My Skills" delay="0.5s" type="a"/>
-                    <FadeInComponent once={true} destination="#qualities" text="My Qualities" delay="1s" type="a"/>
-                    <FadeInComponent once={true} destination="#projects" text="My Projects" delay="1.5s" type="a"/>
-                    <FadeInComponent once={true} destination="#contactme" text="Contact Me" delay="2s" type="a"/>
+                    <FadeInComponent once={true} destination="#aboutme" text="About Me" delay="0s" type="a" class="link"/>
+                    <FadeInComponent once={true} destination="#skills" text="My Skills" delay="0.5s" type="a" class="link"/>
+                    <FadeInComponent once={true} destination="#qualities" text="My Qualities" delay="1s" type="a" class="link"/>
+                    <FadeInComponent once={true} destination="#projects" text="My Projects" delay="1.5s" type="a" class="link"/>
+                    <FadeInComponent once={true} destination="#contactme" text="Contact Me" delay="2s" type="a" class="link"/>
                 </div>
             </div>
         </div>
