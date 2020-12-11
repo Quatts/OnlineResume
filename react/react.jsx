@@ -234,6 +234,12 @@ class RadioSelectDiv extends React.Component{
     }
 }
 
+function GradientImage(props){
+    return(
+        <div className="gradient-image" style={{height: props.height}}>{props.children}</div> 
+    );
+}
+
 class ChangingDiv extends React.Component{
     constructor(props)
     {
@@ -427,6 +433,8 @@ function Intro(props){
                     <FadeInComponent once={true} destination="#projects" text="My Projects" delay="1.5s" type="a" class="link"/>
                     <FadeInComponent once={true} destination="#contactme" text="Contact Me" delay="2s" type="a" class="link"/>
                 </div>
+                <GradientImage height="25vh"/>
+                <FadeInComponent once={true} text="Let's start with some background..." delay="0s" type="h1"/>
             </div>
         </div>
     );
@@ -436,8 +444,8 @@ function Intro(props){
 function Skills(props){
     return(
         <div className="skills-content">
-            <h1>My Skills</h1>        
-        <div className = "list-wrapper" id="skills">
+            <h1 id="skills">My Skills</h1>        
+        <div className = "list-wrapper">
             <RadioSelectDiv lists = {[["JavaScript", "React JS", "HTML", "CSS", "SQL", "PHP", "jQuery"], 
             ["C++", "C#", "Java", ".NET", "Python"], ["Swift", "Android Studio", "XCode"], 
             ["Git", "Visual Studio", "vim", "Sublime Text", "Eclipse"], ["Windows", "Unix", "Docker", "XAMPP", "AGILE"]]} 
@@ -447,7 +455,7 @@ function Skills(props){
             HTML, and CSS.
             </p>
             <p>Software Development: The meat and potatoes of programming, my coursework in C++, Java, and .NET taught me OOP principles, 
-                popular algorithms and data structures (binary tree, anyone?), and the MVC design philosophy. Interested to see what I've done? 
+                popular algorithms and data structures, and the MVC design philosophy. Interested to see what I've done? 
                 Go to:<a href="#projects"> my projects.</a></p>
             <p>Mobile Development: Whether you want to develop for Apple or Android, I'm proficient in both!</p>
             <p>Development Tools: Whether your team codes in a terminal or an advanced IDE, I'll feel right at home.
@@ -459,27 +467,32 @@ function Skills(props){
 
 function Qualities(props){
     return(
-        <div className="qualities-content" id="qualities">
-            <h1>My Qualities</h1>
-            <FadeInComponent delay="0s" text="Passion" type="h2"/>
-            <FadeInComponent delay="0s" text="Passion" type="p" delay="0.5s"/>
+        <div className="qualities-content">
+            <h1 id="qualities">My Qualities</h1>
+            <FadeInComponent once={true} delay="0s" text="Passion" type="h2"/>
+            <FadeInComponent once={true} delay="0s" text="I am always looking to improve my skillset and solve unique challenges. 
+            When programming, bugs are bound to show up. Most people look at them as nuisances. 
+            I view them as a challenge, and when I fix a particularly nasty or persistent bug, 
+            I experience a surge of satisfaction that is almost addicting." type="p" delay="0.5s"/>
 
-            <FadeInComponent delay="0s" text="Detail-Oriented" type="h2"/>
-            <FadeInComponent delay="0s" text="Detail-Oriented" type="p" delay="0.5s"/>
-            <FadeInComponent delay="0s" text="Team Player" type="h2"/>
+            <FadeInComponent once={true} delay="0s" text="Detail-Oriented" type="h2"/>
+            <FadeInComponent once={true} delay="0s" text="When programming for long periods of time, it's easy to overlook small details. 
+            I make a point of looking for the little things during the whole sprint." type="p" delay="0.5s"/>
+            <FadeInComponent once={true} delay="0s" text="Team Player" type="h2"/>
 
-            <FadeInComponent delay="0s" text="Team Player" type="p" delay="0.5s"/>
+            <FadeInComponent once={true} delay="0s" text="In college courses, I often worked in small teams of 2-4. I believe that I thrive in a team setting, 
+            when I can bounce ideas off of other people and learn concepts from other developers." type="p" delay="0.5s"/>
         </div>
     )
 }
 
 function Projects(props){
     return(
-        <div className="projects-content" id="projects">
-            <h1>My Projects</h1>
+        <div className="projects-content">
+            <h1 id="projects">My Projects</h1>
             <div className="project-buttons">
                 <ProjectButton destination="https://github.com/Quatts/Model_Prediction" title="Stock Price Predictor" src="media/python-logo.png" id="project-one"/>
-                <ProjectButton destination="https://github.com/Quatts/OnlineResume/" title="Online Resume/Cover Letter" src="media/react-js.png" id="project-two"/>
+                <ProjectButton destination="https://github.com/Quatts/OnlineResume/" title="Online Resume" src="media/react-js.png" id="project-two"/>
                 <ProjectButton destination="https://www.github.com" title="Sample Project 3" src="media/src1.jpeg" id="project-three"/>
                 <ProjectButton destination="https://www.github.com" title="Sample Project 4" src="media/src1.jpeg" id="project-four"/>
             </div>
@@ -509,12 +522,13 @@ function App(){
         <Header/>
         <Intro/>
         <AboutMe/>
-        <div className="gradient-image-25"></div>
-
+        <GradientImage height="30vh"><FadeInComponent once={true} delay="0s" text="What about practical skills?" type="h1"/></GradientImage>
         <Skills/>
-        <div className="gradient-image"></div>
+        <GradientImage height="30vh"><FadeInComponent once={true} delay="0s" text="Three qualities I'm most proud of having..." type="h1"/></GradientImage>
         <Qualities/>
+        <GradientImage height="40vh"><FadeInComponent once={true} delay="0s" text="Let's see everything come together to form practical programs!" type="h1"/></GradientImage>
         <Projects/>
+        <GradientImage height="30vh"><FadeInComponent once={true} delay="0s" text="Like what you see? Here's my info..." type="h1"/></GradientImage>
     </div>
     );
 }
