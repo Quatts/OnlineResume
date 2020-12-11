@@ -218,7 +218,7 @@ a.fade.visible{
 }
 
 .about-content img{
-    max-height: 250px;
+    max-height: 150px;
     max-width: 100%;
     width: auto;
     height: auto;
@@ -228,6 +228,10 @@ a.fade.visible{
     color: #892cdc;
     margin-left: 15px;
     margin-right: 15px;
+    margin-bottom: 50px;
+}
+
+.about-content p:last-child{
     margin-bottom: 0px;
 }
 
@@ -483,6 +487,7 @@ ul.details{
     color: white;
 }
 
+
 .qualities-content p:last-child {
     margin-bottom: 0px;
 }
@@ -581,8 +586,8 @@ h4{
 
 .qualities-content p{
     width: 75%;
-    margin: auto;
-    text-align: left;
+    margin: 20px auto;
+    text-align: center;
 }
 
 .contact-content{
