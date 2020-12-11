@@ -158,6 +158,7 @@ li{
     flex-flow: row;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 100px 0px;
 }
 
 .intro-navbar a{
@@ -368,6 +369,7 @@ ul.details{
 .skills-content p{
     text-align: left;
     color: white;
+    margin: 20px;
 }
 
 .skills-content p:last-child{
@@ -545,6 +547,7 @@ h4{
     margin-bottom: 50px;
     transform: translate(0,10px);
     transition: all 1s;
+    border: 2px solid white;
 }
 
 .project-preview-image{
@@ -554,6 +557,7 @@ h4{
 }
 
 .project-preview-wrapper:hover{
+    cursor: pointer;
     color: #ffffff;
     transform: translate(0,-10px);
 }

@@ -440,16 +440,19 @@ function Skills(props){
         <div className = "list-wrapper" id="skills">
             <RadioSelectDiv lists = {[["JavaScript", "React JS", "HTML", "CSS", "SQL", "PHP", "jQuery"], 
             ["C++", "C#", "Java", ".NET", "Python"], ["Swift", "Android Studio", "XCode"], 
-            ["Git", "XAMPP", "Visual Studio", "vim", "Sublime Text", "Eclipse"], ["Windows", "Unix"]]} 
+            ["Git", "Visual Studio", "vim", "Sublime Text", "Eclipse"], ["Windows", "Unix", "Docker", "XAMPP", "AGILE"]]} 
             titles = {["Web", "Software", "Mobile", "Tools", "Misc."]} focus={[true,false,false,false,false]}/>
         </div>
             <p>Web Development: My favorite type of development. Front-end is specifically my favorite. This website uses most of the front end technologies listed including React,
             HTML, and CSS.
             </p>
-            <p>Software Development: DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
-            <p>Mobile Development: DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
-            <p>Development Tools: DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
-            <p>Miscellaneous: DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
+            <p>Software Development: The meat and potatoes of programming, my coursework in C++, Java, and .NET taught me OOP principles, 
+                popular algorithms and data structures (binary tree, anyone?), and the MVC design philosophy. Interested to see what I've done? 
+                Go to:<a href="#projects"> my projects.</a></p>
+            <p>Mobile Development: Whether you want to develop for Apple or Android, I'm proficient in both!</p>
+            <p>Development Tools: Whether your team codes in a terminal or an advanced IDE, I'll feel right at home.
+                 This website was coded on Visual Studio Code, both on Windows and Unix systems (mostly unix - MacOS), using git as version control.</p>
+            <p>Miscellaneous: I am confident I can code on any environment, but I'm most confident on a Windows or Unix machine, with AGILE code practices.</p>
         </div>
     );
 }
