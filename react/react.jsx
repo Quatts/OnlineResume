@@ -318,56 +318,6 @@ class ChangingDiv extends React.Component{
     };
 }
 
-class FadeInLink extends React.Component{
-
-    constructor(props)
-    {
-        super(props);
-        this.state = {inViewPort: false};
-        this.once = props.once;
-        this.text = props.text;
-        this.destination = props.destination;
-        this.delay = props.delay;
-        
-        this.handleScroll = this.handleScroll.bind(this);
-
-        this.ref = React.createRef();
-    }
-
-    componentDidMount(){
-        window.addEventListener('scroll', this.handleScroll);
-    }
-
-    componentWillUnmount(){
-        window.removeEventListener('scroll', this.handleScroll);
-    }
-
-    handleScroll(){
-        var rect = this.ref.current.getBoundingClientRect();
-        
-        if(!this.state.inViewPort)
-        {
-
-            if(rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)){
-                this.setState({inViewPort: true});
-            }
-        }
-        else if(!this.once && rect.bottom > (window.innerHeight || document.documentElement.clientHeight)){
-            this.setState({inViewPort: false});
-        }
-    }
-
-    render(){
-
-        var classnames = this.state.inViewPort ? "visible " : "";
-        var classnames = this.once ? classnames+"fade once" : classnames+"fade"
-
-        return(
-            <a ref={this.ref} className={classnames} href={this.destination} style={{transitionDelay: this.delay}}>{this.text}</a>
-        )
-    };
-}
-
 class BackToTop extends React.Component{
     constructor(props){
         super(props);
@@ -408,14 +358,22 @@ class BackToTop extends React.Component{
     }
 }
 
-class FadeInHeader extends React.Component{
+function FadeInComponent(props){
+    const CustomType = `${props.type}`;
+    return(
+        <FadeIn once={props.once} delay={props.delay}>
+            <CustomType href={props.destination} className={props.class}>{props.text}</CustomType>
+        </FadeIn>
+    );
+}
 
-    constructor(props)
-    {
+  
+
+class FadeIn extends React.Component{
+    constructor(props){
         super(props);
         this.state = {inViewPort: false};
         this.once = props.once;
-        this.text = props.text;
         this.delay = props.delay;
         
         this.handleScroll = this.handleScroll.bind(this);
@@ -437,12 +395,12 @@ class FadeInHeader extends React.Component{
         if(!this.state.inViewPort)
         {
 
-            if(rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)){
+            if(rect.top <= (window.innerHeight || document.documentElement.clientHeight)){
                 this.setState({inViewPort: true});
             }
         }
-        else if(!this.once && rect.bottom > (window.innerHeight || document.documentElement.clientHeight)){
-            this.setState({inViewPort: false});
+        else if(!this.once && rect.top > (window.innerHeight || document.documentElement.clientHeight)){
+                this.setState({inViewPort: false});
         }
     }
 
@@ -450,26 +408,24 @@ class FadeInHeader extends React.Component{
 
         var classnames = this.state.inViewPort ? "visible " : "";
         var classnames = this.once ? classnames+"fade once" : classnames+"fade"
-
         return(
-            <h2 ref={this.ref} className={classnames}>{this.text}</h2>
+            <div ref={this.ref} style={{transitionDelay: this.delay}} className={classnames}>{this.props.children}</div>
         )
     };
 }
-
 function Intro(props){
     return(
         <div className="gradient-image">
             <div className="content">
                 <h1>Hello. Welcome to my online resume.</h1>
-                <FadeInHeader once={false} text="Click a link to skip to a specific section, or keep scrolling down to continue." delay="0s"/>
+                <FadeInComponent once={false} text="Click a link to skip to a specific section, or keep scrolling down to continue." delay="0s" type="h1"/>
                 
                 <div className="intro-navbar">
-                    <FadeInLink once={true} destination="#aboutme" text="About Me" delay="0s"/>
-                    <FadeInLink once={true} destination="#skills" text="My Skills" delay="0.5s"/>
-                    <FadeInLink once={true} destination="#qualities" text="My Qualities" delay="1s"/>
-                    <FadeInLink once={true} destination="#projects" text="My Projects" delay="1.5s"/>
-                    <FadeInLink once={true} destination="#contactme" text="Contact Me" delay="2s"/>
+                    <FadeInComponent once={true} destination="#aboutme" text="About Me" delay="0s" type="a" class="link"/>
+                    <FadeInComponent once={true} destination="#skills" text="My Skills" delay="0.5s" type="a" class="link"/>
+                    <FadeInComponent once={true} destination="#qualities" text="My Qualities" delay="1s" type="a" class="link"/>
+                    <FadeInComponent once={true} destination="#projects" text="My Projects" delay="1.5s" type="a" class="link"/>
+                    <FadeInComponent once={true} destination="#contactme" text="Contact Me" delay="2s" type="a" class="link"/>
                 </div>
             </div>
         </div>
@@ -484,16 +440,19 @@ function Skills(props){
         <div className = "list-wrapper" id="skills">
             <RadioSelectDiv lists = {[["JavaScript", "React JS", "HTML", "CSS", "SQL", "PHP", "jQuery"], 
             ["C++", "C#", "Java", ".NET", "Python"], ["Swift", "Android Studio", "XCode"], 
-            ["Git", "XAMPP", "Visual Studio", "vim", "Sublime Text", "Eclipse"], ["Windows", "Unix"]]} 
+            ["Git", "Visual Studio", "vim", "Sublime Text", "Eclipse"], ["Windows", "Unix", "Docker", "XAMPP", "AGILE"]]} 
             titles = {["Web", "Software", "Mobile", "Tools", "Misc."]} focus={[true,false,false,false,false]}/>
         </div>
             <p>Web Development: My favorite type of development. Front-end is specifically my favorite. This website uses most of the front end technologies listed including React,
             HTML, and CSS.
             </p>
-            <p>Software Development: DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
-            <p>Mobile Development: DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
-            <p>Development Tools: DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
-            <p>Miscellaneous: DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
+            <p>Software Development: The meat and potatoes of programming, my coursework in C++, Java, and .NET taught me OOP principles, 
+                popular algorithms and data structures (binary tree, anyone?), and the MVC design philosophy. Interested to see what I've done? 
+                Go to:<a href="#projects"> my projects.</a></p>
+            <p>Mobile Development: Whether you want to develop for Apple or Android, I'm proficient in both!</p>
+            <p>Development Tools: Whether your team codes in a terminal or an advanced IDE, I'll feel right at home.
+                 This website was coded on Visual Studio Code, both on Windows and Unix systems (mostly unix - MacOS), using git as version control.</p>
+            <p>Miscellaneous: I am confident I can code on any environment, but I'm most confident on a Windows or Unix machine, with AGILE code practices.</p>
         </div>
     );
 }
@@ -502,8 +461,44 @@ function Qualities(props){
     return(
         <div className="qualities-content" id="qualities">
             <h1>My Qualities</h1>
-            <ChangingDiv titles={["passion", "two", "three"]} descriptions={["one", "two desc", "three edesc"]}/>
+            <FadeInComponent delay="0s" text="Passion" type="h2"/>
+            <FadeInComponent delay="0s" text="Passion" type="p" delay="0.5s"/>
+
+            <FadeInComponent delay="0s" text="Detail-Oriented" type="h2"/>
+            <FadeInComponent delay="0s" text="Detail-Oriented" type="p" delay="0.5s"/>
+            <FadeInComponent delay="0s" text="Team Player" type="h2"/>
+
+            <FadeInComponent delay="0s" text="Team Player" type="p" delay="0.5s"/>
         </div>
+    )
+}
+
+function Projects(props){
+    return(
+        <div className="projects-content" id="projects">
+            <h1>My Projects</h1>
+            <div className="project-buttons">
+                <ProjectButton destination="https://github.com/Quatts/Model_Prediction" title="Stock Price Predictor" src="media/python-logo.png" id="project-one"/>
+                <ProjectButton destination="https://github.com/Quatts/OnlineResume/" title="Online Resume/Cover Letter" src="media/react-js.png" id="project-two"/>
+                <ProjectButton destination="https://www.github.com" title="Sample Project 3" src="media/src1.jpeg" id="project-three"/>
+                <ProjectButton destination="https://www.github.com" title="Sample Project 4" src="media/src1.jpeg" id="project-four"/>
+            </div>
+        </div>
+    )
+}
+
+function ProjectButton(props)
+{
+    let imageSource = props.src;
+    return(
+    <div className="project-preview-wrapper">
+        <label className="project-preview" htmlFor={props.id}>{props.title}</label>
+        <div className="project-preview-image" style={{backgroundImage : "url("+imageSource+"), linear-gradient(to bottom,rgba(255,255,255,0), rgb(255,255,255))"}}>
+            <form action={props.destination}>
+                <button id={props.id} type="submit">{props.title}</button>
+            </form>
+        </div>
+    </div>
     )
 }
 
@@ -519,6 +514,7 @@ function App(){
         <Skills/>
         <div className="gradient-image"></div>
         <Qualities/>
+        <Projects/>
     </div>
     );
 }
