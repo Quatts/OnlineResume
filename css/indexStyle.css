@@ -289,7 +289,7 @@ a.fade.visible{
     border-radius:50%;
     color: #000000;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
     justify-content: center;
     margin: auto;
 }
@@ -374,6 +374,15 @@ ul.details{
 
 .skills-content p:last-child{
     margin-bottom: 0px;
+}
+
+.skills-content p a{
+    text-decoration: none;
+    color: #52057b;
+}
+
+.skills-content p a:hover{
+    color: #bc6ff1;
 }
 
 .fadeIn.details{
