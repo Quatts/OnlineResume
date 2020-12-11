@@ -584,3 +584,23 @@ h4{
     margin: auto;
     text-align: left;
 }
+
+.contact-content{
+    text-align: center;
+}
+
+.contact-content h1{
+    margin: auto 0px;
+    color: #ffffff;
+}
+
+.footer-content{
+    text-align: center;
+    font-weight: lighter;
+    background-color: #111111;
+}
+
+.footer-content p{
+    margin: auto 0px;
+    color: #bbbbbb;
+}

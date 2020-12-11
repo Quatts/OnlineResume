@@ -515,6 +515,24 @@ function ProjectButton(props)
     )
 }
 
+function ContactMe(props)
+{
+    return(
+        <div className="contact-content">
+            <FadeInComponent once={true} delay="0s" text="EMAIL: alexanderquatrini@gmail.com" type="h1"/>
+        </div>
+    )
+}
+
+function Footer(props)
+{
+    return(
+        <div className="footer-content">
+            <p>This website was programmed entirely by me, Alexander Quatrini</p>
+        </div>
+    )
+}
+
 function App(){
     return (
     <div className="webPage">
@@ -528,7 +546,9 @@ function App(){
         <Qualities/>
         <GradientImage height="40vh"><FadeInComponent once={true} delay="0s" text="Let's see everything come together to form practical programs!" type="h1"/></GradientImage>
         <Projects/>
-        <GradientImage height="30vh"><FadeInComponent once={true} delay="0s" text="Like what you see? Here's my info..." type="h1"/></GradientImage>
+        <GradientImage height="10vh"><FadeInComponent once={true} delay="0s" text="Like what you see? Here's my info..." type="h1"/></GradientImage>
+        <GradientImage height="35vh"> <ContactMe/> </GradientImage>
+        <Footer/>
     </div>
     );
 }
