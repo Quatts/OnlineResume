@@ -476,7 +476,7 @@ function Qualities(props){
 
             <FadeInComponent once={true} delay="0s" text="Detail-Oriented" type="h2"/>
             <FadeInComponent once={true} delay="0s" text="When programming for long periods of time, it's easy to overlook small details. 
-            I make a point of looking for the little things during the whole sprint." type="p" delay="0.5s"/>
+            I make a point of looking for the little things." type="p" delay="0.5s"/>
             <FadeInComponent once={true} delay="0s" text="Team Player" type="h2"/>
 
             <FadeInComponent once={true} delay="0s" text="In college courses, I often worked in small teams of 2-4. I believe that I thrive in a team setting, 
@@ -492,8 +492,8 @@ function Projects(props){
             <div className="project-buttons">
                 <ProjectButton destination="https://github.com/Quatts/Model_Prediction" title="Stock Price Predictor" src="media/python-logo.png" id="project-one"/>
                 <ProjectButton destination="https://github.com/Quatts/OnlineResume/" title="Online Resume" src="media/react-js.png" id="project-two"/>
-                <ProjectButton destination="https://www.github.com" title="Sample Project 3" src="media/src1.jpeg" id="project-three"/>
-                <ProjectButton destination="https://www.github.com" title="Sample Project 4" src="media/src1.jpeg" id="project-four"/>
+                {/*<ProjectButton destination="https://www.github.com" title="Sample Project 3" src="media/src1.jpeg" id="project-three"/>
+                <ProjectButton destination="https://www.github.com" title="Sample Project 4" src="media/src1.jpeg" id="project-four"/>*/}
             </div>
         </div>
     )
