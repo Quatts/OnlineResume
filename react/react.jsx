@@ -41,8 +41,8 @@ function AboutMe(props){
                 <img src="media/niu.png"/>
             </div>
             
-            <p>    My name is Alexander Quatrini, I am a recent graduate with a B.S. in Computer Science from Northern Illinois University, looking for an entry level software developer position.
-                Ideally, I would like to have a position as a front end or full stack developer, but I am skilled in many types of programming languages and frameworks.
+            <p> I am a recent graduate with a B.S. in Computer Science from Northern Illinois University, looking for an entry level software developer position.
+                I am skilled in many popular programming languages and frameworks.
                 (For a detailed list go to <a href="#skills">My Skills</a>). 
             </p>
 
@@ -52,9 +52,9 @@ function AboutMe(props){
                 <img src="media/src5.jpg"/>
             </div>
             <p>
-                I was born and raised in Illinois. My first experience with programming was in AP Computer Science.
-                I was a natural at it, and got instantly hooked. I decided to make CS my major. At college, I met my now girlfriend 
-                in my sophomore year. I plan on staying near the Chicago area, and can't wait to get my career started.
+                I was born and raised in Tinley Park, Illinois. My first experience with programming was in AP Computer Science.
+                I was a natural at it, and instantly got hooked. I decided to make CS my major. 
+                I plan on staying near the Chicago area, and can't wait to get my career started.
             </p>
 
             <h3>Hobbies</h3>
@@ -64,8 +64,7 @@ function AboutMe(props){
             </div>
             <p>
                     I like to keep both my logical and creative side stimulated. Besides programming in my free time, a good way to do this is by playing my favorite game,
-                Dungeons and Dragons. I usually play the role of the dungeon master which means I run the game for a small group of players.
-                I create my own stories and run them with my group once a week. I enjoy a lot of tabletop games that I play with friends and family. 
+                Dungeons and Dragons. I create my own plot lines and run them with a small group once a week. I also enjoy a lot of tabletop games that I play with friends and family. 
             </p>
         </div>
     );
@@ -451,7 +450,7 @@ function Skills(props){
             ["Git", "Visual Studio", "vim", "Sublime Text", "Eclipse"], ["Windows", "Unix", "Docker", "XAMPP", "AGILE"]]} 
             titles = {["Web", "Software", "Mobile", "Tools", "Misc."]} focus={[true,false,false,false,false]}/>
         </div>
-            <p>Web Development: My favorite type of development. Front-end is specifically my favorite. This website uses most of the front end technologies listed including React,
+            {/*<p>Web Development: My favorite type of development. Front-end is specifically my favorite. This website uses most of the front-end technologies listed including React,
             HTML, and CSS.
             </p>
             <p>Software Development: The meat and potatoes of programming, my coursework in C++, Java, and .NET taught me OOP principles, 
@@ -459,8 +458,8 @@ function Skills(props){
                 Go to:<a href="#projects"> my projects.</a></p>
             <p>Mobile Development: Whether you want to develop for Apple or Android, I'm proficient in both!</p>
             <p>Development Tools: Whether your team codes in a terminal or an advanced IDE, I'll feel right at home.
-                 This website was coded on Visual Studio Code, both on Windows and Unix systems (mostly unix - MacOS), using git as version control.</p>
-            <p>Miscellaneous: I am confident I can code on any environment, but I'm most confident on a Windows or Unix machine, with AGILE code practices.</p>
+                 This website was coded on Visual Studio Code, both on Windows and Unix systems (mostly Unix - MacOS), using git as version control.</p>
+            <p>Miscellaneous: I am confident I can code on any environment, but I'm most confident on a Windows or Unix machine, with AGILE code practices.</p>*/}
         </div>
     );
 }
@@ -477,7 +476,7 @@ function Qualities(props){
 
             <FadeInComponent once={true} delay="0s" text="Detail-Oriented" type="h2"/>
             <FadeInComponent once={true} delay="0s" text="When programming for long periods of time, it's easy to overlook small details. 
-            I make a point of looking for the little things during the whole sprint." type="p" delay="0.5s"/>
+            I make a point of looking for the little things." type="p" delay="0.5s"/>
             <FadeInComponent once={true} delay="0s" text="Team Player" type="h2"/>
 
             <FadeInComponent once={true} delay="0s" text="In college courses, I often worked in small teams of 2-4. I believe that I thrive in a team setting, 
@@ -493,8 +492,8 @@ function Projects(props){
             <div className="project-buttons">
                 <ProjectButton destination="https://github.com/Quatts/Model_Prediction" title="Stock Price Predictor" src="media/python-logo.png" id="project-one"/>
                 <ProjectButton destination="https://github.com/Quatts/OnlineResume/" title="Online Resume" src="media/react-js.png" id="project-two"/>
-                <ProjectButton destination="https://www.github.com" title="Sample Project 3" src="media/src1.jpeg" id="project-three"/>
-                <ProjectButton destination="https://www.github.com" title="Sample Project 4" src="media/src1.jpeg" id="project-four"/>
+                {/*<ProjectButton destination="https://www.github.com" title="Sample Project 3" src="media/src1.jpeg" id="project-three"/>
+                <ProjectButton destination="https://www.github.com" title="Sample Project 4" src="media/src1.jpeg" id="project-four"/>*/}
             </div>
         </div>
     )
@@ -515,6 +514,25 @@ function ProjectButton(props)
     )
 }
 
+function ContactMe(props)
+{
+    return(
+        <div className="contact-content" id="contactme">
+            <FadeInComponent once={true} delay="0s" text="alexanderquatrini@gmail.com" type="h2"/>
+            <FadeInComponent destination="https://www.linkedin.com/in/alexander-quatrini/" once={true} delay="0s" text="LinkedIn" type="a"/>
+        </div>
+    )
+}
+
+function Footer(props)
+{
+    return(
+        <div className="footer-content">
+            <p>This website was programmed entirely by me, Alexander Quatrini</p>
+        </div>
+    )
+}
+
 function App(){
     return (
     <div className="webPage">
@@ -528,7 +546,9 @@ function App(){
         <Qualities/>
         <GradientImage height="40vh"><FadeInComponent once={true} delay="0s" text="Let's see everything come together to form practical programs!" type="h1"/></GradientImage>
         <Projects/>
-        <GradientImage height="30vh"><FadeInComponent once={true} delay="0s" text="Like what you see? Here's my info..." type="h1"/></GradientImage>
+        <GradientImage height="10vh"><FadeInComponent once={true} delay="0s" text="Like what you see? Here's my info..." type="h1"/></GradientImage>
+        <GradientImage height="35vh"> <ContactMe/> </GradientImage>
+        <Footer/>
     </div>
     );
 }

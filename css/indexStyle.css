@@ -7,6 +7,18 @@ body{
     font-size: 24px;
 }
 
+@media only screen and (max-width: 600px){
+    
+    body
+    {
+        font-size: 16px;
+    }
+
+    h1{
+        font-size: 20px;
+    }
+}
+
 h1{
     color: #ffffff;
 }
@@ -20,7 +32,7 @@ h1{
     border-radius: 15px;
     text-decoration: none;
     color: black;
-    background-color: #29c7ac;
+    background-color: #49c3d3;
     z-index: 99;
     transition: opacity .75s;
     border: 2px solid black;
@@ -31,13 +43,12 @@ h1{
 }
 
 .return-to-top:hover{
-    background-color: #3797a4;
+    background-color: #a2f7e8;
     color: black;
 }
 
 .header{
     font-family: monospace;
-    font-size: 25px;
     padding: 80px;
     background-color: #111111;
     color: #892cdc;
@@ -91,11 +102,6 @@ body{
 /* MY SKILLS HEADER*/
 h2{
     color: #462085;
-    font-size: 35px;
-}
-
-li{
-    font-size: 25px;
 }
 
 .gradient-image{
@@ -145,7 +151,6 @@ li{
 }
 
 .content p{
-    font-size: 24px;
     color: white;
     border: 3px solid black;
     background: black;
@@ -170,7 +175,6 @@ li{
     text-decoration: none;
     border: 2px solid black;
     background: #52057b;
-    font-size: 24px;
     padding: 20px;
 }
 
@@ -179,9 +183,13 @@ li{
 }
 
 .fade.visible{
-    margin: auto;
+    margin: 2em;
     opacity: 1;
     transform: translate(0,0);
+}
+
+.fade.visible:last-child{
+    margin-bottom: 0px;
 }
 
 .fade{
@@ -218,7 +226,7 @@ a.fade.visible{
 }
 
 .about-content img{
-    max-height: 250px;
+    max-height: 150px;
     max-width: 100%;
     width: auto;
     height: auto;
@@ -228,6 +236,10 @@ a.fade.visible{
     color: #892cdc;
     margin-left: 15px;
     margin-right: 15px;
+    margin-bottom: 30px;
+}
+
+.about-content p:last-child{
     margin-bottom: 0px;
 }
 
@@ -328,7 +340,6 @@ ul.details{
     flex-flow: row;
     flex-wrap: wrap;
     justify-content: center;
-    font-size: 30px;
 }
 
 .radio-unfocus .small-focus{
@@ -483,6 +494,7 @@ ul.details{
     color: white;
 }
 
+
 .qualities-content p:last-child {
     margin-bottom: 0px;
 }
@@ -581,6 +593,35 @@ h4{
 
 .qualities-content p{
     width: 75%;
-    margin: auto;
-    text-align: left;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.contact-content{
+    text-align: center;
+}
+
+.contact-content h1{
+    margin: auto 0px;
+    color: #ffffff;
+}
+
+.contact-content a{
+    text-decoration: none;
+    color: #52057b;
+}
+
+.contact-content a:hover{
+    color: #bc6ff1;
+}
+
+.footer-content{
+    text-align: center;
+    font-weight: lighter;
+    background-color: #111111;
+}
+
+.footer-content p{
+    margin: auto 0px;
+    color: #bbbbbb;
 }
