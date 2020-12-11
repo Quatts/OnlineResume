@@ -236,11 +236,11 @@ a.fade.visible{
 }
 
 .about-content a{
-    color: white;
+    color: gray;
 }
 
 .about-content a:hover{
-    color: gray;
+    color: #ffffff;
 }
 
 .about-content{
