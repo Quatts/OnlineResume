@@ -106,7 +106,7 @@ h2{
 
 .gradient-image{
     height: 125%;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)), url(../media/back-image.png);
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(17,17,17,1)), url(../media/back-image.png);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -117,7 +117,7 @@ h2{
 
 .gradient-image-25{
     height: 25%;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)), url(../media/back-image.png);
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(17,17,17,1)), url(../media/back-image.png);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -218,6 +218,7 @@ a.fade.visible{
 }
 
 .about-content h1{
+    margin-top: 25px;
     margin-bottom: 25px;
     padding: 15px;
     background-image: linear-gradient(to right, rgba(255,255,255,0), 10%, rgba(255,255,255,1));
@@ -321,7 +322,7 @@ ul.details{
 }
 
 .radio-wrapper{
-    width: 50%;
+    width: 70%;
     text-align: center;
     display: flex;
     flex-flow: column;
@@ -591,6 +592,10 @@ h4{
     color: #892cdc
 }
 
+.project-preview-wrapper label:hover{
+    cursor: pointer;
+}
+
 .qualities-content p{
     width: 75%;
     margin: 20px auto;
@@ -599,6 +604,14 @@ h4{
 
 .contact-content{
     text-align: center;
+    font-size: 40px;
+}
+
+@media only screen and (max-width: 1000px)
+{
+    .contact-content{
+        font-size: 15px;
+    }
 }
 
 .contact-content h1{

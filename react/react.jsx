@@ -54,7 +54,7 @@ function AboutMe(props){
             <p>
                 I was born and raised in Tinley Park, Illinois. My first experience with programming was in AP Computer Science.
                 I was a natural at it, and instantly got hooked. I decided to make CS my major. 
-                I plan on staying near the Chicago area, and can't wait to get my career started.
+                I plan on staying near the Chicago area, and I can't wait to get my career started.
             </p>
 
             <h3>Hobbies</h3>
@@ -505,7 +505,7 @@ function ProjectButton(props)
     return(
     <div className="project-preview-wrapper">
         <label className="project-preview" htmlFor={props.id}>{props.title}</label>
-        <div className="project-preview-image" style={{backgroundImage : "url("+imageSource+"), linear-gradient(to bottom,rgba(255,255,255,0), rgb(255,255,255))"}}>
+        <div onClick={() => window.location = props.destination} className="project-preview-image" style={{backgroundImage : "url("+imageSource+"), linear-gradient(to bottom,rgba(255,255,255,0), rgb(255,255,255))"}}>
             <form action={props.destination}>
                 <button id={props.id} type="submit">{props.title}</button>
             </form>
