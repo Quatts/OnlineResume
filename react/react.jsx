@@ -1,56 +1,20 @@
-function Link(props)
-{
-    return <a href={props.destination}>{props.name}</a>
-}
-
-function Image(props)
-{
-    return <img src={props.source} height={props.height} width={props.width}></img>
-}
-
-function BodyText(props)
-{
-    return <h3>{props.text}</h3>
-}
-
-function BodyHeader(props)
-{
-    return <h2>{props.text}</h2>
-}
-
-function UnorderedList(props)
-{
-    const items = props.itemList;
-
-    const listItems = items.map((number) =>
-    <li key={number.toString()}>
-      {number}
-    </li>
-  );
-  return (
-    <ul>{listItems}</ul>
-  );
-}
+import React from 'react';
+import pythonLogo from '../media/python-logo.png';
+import reactLogo from '../media/react-js.png'
 
 function AboutMe(props){
     return(
         <div className="about-content">
-            <h1 id="aboutme">About Me</h1>
-            <div className="floating-content">
-            
-                <img src="media/niu.png"/>
-            </div>
+            <h1>About Me</h1>
             
             <p> I am a recent graduate with a B.S. in Computer Science from Northern Illinois University, looking for an entry level software developer position.
-                I am skilled in many popular programming languages and frameworks.
-                (For a detailed list go to <a href="#skills">My Skills</a>). 
+                I am skilled in many popular programming languages and frameworks. 
             </p>
+
+            <p>(For a detailed list go to <a href="#skills">My Skills</a>).</p>
 
             <h3>Personal Life</h3>
 
-            <div className="floating-content">
-                <img src="media/src5.jpg"/>
-            </div>
             <p>
                 I was born and raised in Tinley Park, Illinois. My first experience with programming was in AP Computer Science.
                 I was a natural at it, and instantly got hooked. I decided to make CS my major. 
@@ -58,10 +22,6 @@ function AboutMe(props){
             </p>
 
             <h3>Hobbies</h3>
-
-            <div className="floating-content">
-                <img src="media/src4.png"/>
-            </div>
             <p>
                     I like to keep both my logical and creative side stimulated. Besides programming in my free time, a good way to do this is by playing my favorite game,
                 Dungeons and Dragons. I create my own plot lines and run them with a small group once a week. I also enjoy a lot of tabletop games that I play with friends and family. 
@@ -70,68 +30,13 @@ function AboutMe(props){
     );
 }
 
-function Navbar(props)
-{
-    return(
-    <div className="navbar">
-            <a href="#aboutme">About Me</a>
-            <a href="#skills">My Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contactme">Contact Me</a>
-    </div>
-    );
-}
-
 function Header(props){
     return(
         <div className="header">
             <h1 id="top">Alexander Quatrini</h1>
             <p>Passionate, Efficient, and Creative Development</p>
-            <p>&#x2B07; Scroll Down &#x2B07;</p>
         </div>
     );
-}
-
-class ChangingImage extends React.Component{
-    constructor(props){
-        super(props);
-        this.imageSources = props.images.split(",");
-        this.state = {imagesource: props.startimagesource, fadeIn:true};
-
-    }
-    
-    componentDidMount(){
-        this.timerID = setInterval(() => this.nextImage(), 5000);
-        this.imagecount = 0;
-        this.setState({fadeIn:true});
-    }
-
-    componentWillUnmount(){
-        clearInterval(this.timerID);
-    }
-
-    nextImage(){
-        
-        this.setState({fadeIn: false});
-
-        if(this.imagecount >= this.imageSources.length)
-        {
-            this.imagecount = 0;
-        }
-
-        this.timer = setTimeout(() => {this.setState({fadeIn:true}), this.setState({imagesource: this.imageSources[this.imagecount]}),this.imagecount++}, 500);
-
-    }
-
-    render(){
-
-        const classnames = this.state.fadeIn ? "fadeIn" : "fadeOut";
-        return(
-        <div className = {classnames}>
-            <Image source = {this.state.imagesource}/>
-        </div>
-        );
-    }
 }
 
 class RadioSelectDiv extends React.Component{
@@ -192,7 +97,7 @@ class RadioSelectDiv extends React.Component{
 
         this.setState({id: value});
 
-        this.timer = setTimeout(() => {this.onUpdateItem(this.state.id), this.setState({focused: true})}, 500);
+        this.timer = setTimeout(() => this.onUpdateItem(this.state.id), this.setState({focused: true}), 500);
 
     }
 
@@ -239,90 +144,6 @@ function GradientImage(props){
     );
 }
 
-class ChangingDiv extends React.Component{
-    constructor(props)
-    {
-        super(props);
-        this.divcount = 0;
-        this.state = {fadeIn: true};
-        this.manualNextDiv = this.manualNextDiv.bind(this);
-        this.manualPrevDiv = this.manualPrevDiv.bind(this);
-    }
-
-    componentDidMount(){
-        this.timerID = setInterval(() => this.nextDiv(), 5000);
-        this.setState({fadeIn:true});
-    }
-
-    componentWillUnmount(){
-        clearInterval(timerID);
-    }
-
-    manualPrevDiv(){        
-        this.setState({fadeIn: false});
-
-        this.divcount--;
-
-        if(this.divcount < 0)
-        {
-            this.divcount = this.props.descriptions.length-1;
-        }
-
-        this.timer = setTimeout(() => {this.setState({fadeIn:true})}, 500);
-    }
-
-    manualNextDiv(){
-        this.setState({fadeIn: false});
-
-        this.divcount++;
-
-        if(this.divcount >= this.props.descriptions.length)
-        {
-            this.divcount = 0;
-        }
-
-        this.timer = setTimeout(() => {this.setState({fadeIn:true})}, 500);
-    }
-
-    nextDiv(){
-        this.setState({fadeIn: false});
-
-        this.divcount++;
-
-        if(this.divcount >= this.props.descriptions.length)
-        {
-            this.divcount = 0;
-        }
-
-        this.timer = setTimeout(() => {this.setState({fadeIn:true})}, 500);
-    }
-
-    render(){
-
-  const classnames = this.state.fadeIn ? "fadeIn" : "fadeOut";
-
-        return(
-        <div className="carousel">
-            <label htmlFor="btn1">&#x25C0;</label>
-            <div className = "changingdiv-wrapper">
-                
-                <h4 className = {"qualities-title"}>{this.props.titles[this.divcount]}</h4>
-
-                <div className = {classnames}>
-                    <p>{this.props.descriptions[this.divcount]}</p>
-                </div>
-
-                <div className = "buttons-wrapper">
-                    <button className="btn1" id="btn1" onClick={this.manualPrevDiv}/>
-                    <button className="btn2" id="btn2" onClick={this.manualNextDiv}/>
-                </div>
-            </div>
-            <label htmlFor="btn2">&#x25B6;</label>
-        </div>
-        )
-    };
-}
-
 class BackToTop extends React.Component{
     constructor(props){
         super(props);
@@ -367,7 +188,7 @@ function FadeInComponent(props){
     const CustomType = `${props.type}`;
     return(
         <FadeIn once={props.once} delay={props.delay}>
-            <CustomType href={props.destination} className={props.class}>{props.text}</CustomType>
+            <CustomType id={props.id} href={props.destination} className={props.class}>{props.text}</CustomType>
         </FadeIn>
     );
 }
@@ -412,7 +233,7 @@ class FadeIn extends React.Component{
     render(){
 
         var classnames = this.state.inViewPort ? "visible " : "";
-        var classnames = this.once ? classnames+"fade once" : classnames+"fade"
+        classnames = this.once ? classnames+"fade once" : classnames+"fade"
         return(
             <div ref={this.ref} style={{transitionDelay: this.delay}} className={classnames}>{this.props.children}</div>
         )
@@ -420,11 +241,7 @@ class FadeIn extends React.Component{
 }
 function Intro(props){
     return(
-        <div className="gradient-image">
             <div className="content">
-                <h1>Hello. Welcome to my online resume.</h1>
-                <FadeInComponent once={false} text="Click a link to skip to a specific section, or keep scrolling down to continue." delay="0s" type="h1"/>
-                
                 <div className="intro-navbar">
                     <FadeInComponent once={true} destination="#aboutme" text="About Me" delay="0s" type="a" class="link"/>
                     <FadeInComponent once={true} destination="#skills" text="My Skills" delay="0.5s" type="a" class="link"/>
@@ -432,10 +249,7 @@ function Intro(props){
                     <FadeInComponent once={true} destination="#projects" text="My Projects" delay="1.5s" type="a" class="link"/>
                     <FadeInComponent once={true} destination="#contactme" text="Contact Me" delay="2s" type="a" class="link"/>
                 </div>
-                <GradientImage height="25vh"/>
-                <FadeInComponent once={true} text="Let's start with some background..." delay="0s" type="h1"/>
             </div>
-        </div>
     );
 }
 
@@ -443,7 +257,7 @@ function Intro(props){
 function Skills(props){
     return(
         <div className="skills-content">
-            <h1 id="skills">My Skills</h1>        
+            <h1>My Skills</h1>        
         <div className = "list-wrapper">
             <RadioSelectDiv lists = {[["JavaScript", "React JS", "HTML", "CSS", "SQL", "PHP", "jQuery"], 
             ["C++", "C#", "Java", ".NET", "Python"], ["Swift", "Android Studio", "XCode"], 
@@ -467,19 +281,19 @@ function Skills(props){
 function Qualities(props){
     return(
         <div className="qualities-content">
-            <h1 id="qualities">My Qualities</h1>
+            <h1>My Qualities</h1>
             <FadeInComponent once={true} delay="0s" text="Passion" type="h2"/>
-            <FadeInComponent once={true} delay="0s" text="I am always looking to improve my skillset and solve unique challenges. 
+            <FadeInComponent once={true} text="I am always looking to improve my skillset and solve unique challenges. 
             When programming, bugs are bound to show up. Most people look at them as nuisances. 
             I view them as a challenge, and when I fix a particularly nasty or persistent bug, 
             I experience a surge of satisfaction that is almost addicting." type="p" delay="0.5s"/>
 
             <FadeInComponent once={true} delay="0s" text="Detail-Oriented" type="h2"/>
-            <FadeInComponent once={true} delay="0s" text="When programming for long periods of time, it's easy to overlook small details. 
+            <FadeInComponent once={true} text="When programming for long periods of time, it's easy to overlook small details. 
             I make a point of looking for the little things." type="p" delay="0.5s"/>
             <FadeInComponent once={true} delay="0s" text="Team Player" type="h2"/>
 
-            <FadeInComponent once={true} delay="0s" text="In college courses, I often worked in small teams of 2-4. I believe that I thrive in a team setting, 
+            <FadeInComponent once={true} text="In college courses, I often worked in small teams of 2-4. I believe that I thrive in a team setting, 
             when I can bounce ideas off of other people and learn concepts from other developers." type="p" delay="0.5s"/>
         </div>
     )
@@ -490,8 +304,8 @@ function Projects(props){
         <div className="projects-content">
             <h1 id="projects">My Projects</h1>
             <div className="project-buttons">
-                <ProjectButton destination="https://github.com/Quatts/Model_Prediction" title="Stock Price Predictor" src="media/python-logo.png" id="project-one"/>
-                <ProjectButton destination="https://github.com/Quatts/OnlineResume/" title="Online Resume" src="media/react-js.png" id="project-two"/>
+                <ProjectButton destination="https://github.com/Quatts/Model_Prediction" title="Stock Predictor" src={pythonLogo} id="project-one"/>
+                <ProjectButton destination="https://github.com/Quatts/OnlineResume/" title="Online Resume" src={reactLogo} id="project-two"/>
                 {/*<ProjectButton destination="https://www.github.com" title="Sample Project 3" src="media/src1.jpeg" id="project-three"/>
                 <ProjectButton destination="https://www.github.com" title="Sample Project 4" src="media/src1.jpeg" id="project-four"/>*/}
             </div>
@@ -518,7 +332,7 @@ function ContactMe(props)
 {
     return(
         <div className="contact-content" id="contactme">
-            <FadeInComponent once={true} delay="0s" text="alexanderquatrini@gmail.com" type="h2"/>
+            <FadeInComponent destination="mailto:alexanderquatrini@gmail.com"once={true} delay="0s" text="alexanderquatrini@gmail.com" type="a"/>
             <FadeInComponent destination="https://www.linkedin.com/in/alexander-quatrini/" once={true} delay="0s" text="LinkedIn" type="a"/>
         </div>
     )
@@ -528,7 +342,7 @@ function Footer(props)
 {
     return(
         <div className="footer-content">
-            <p>This website was programmed entirely by me, Alexander Quatrini</p>
+            <p>Website Programmed by Alexander Quatrini</p>
         </div>
     )
 }
@@ -538,22 +352,26 @@ function App(){
     <div className="webPage">
         <BackToTop text="back to top" desiredClassName="return-to-top"/>
         <Header/>
-        <Intro/>
+        <GradientImage height="15em"><h1>Hello. Welcome to my online resume.</h1></GradientImage>
+        <GradientImage height="10em">
+            <FadeInComponent once={false} text="Click a link to skip to a specific section, or keep scrolling down to continue." delay="0s" type="h1"/>
+        </GradientImage>
+        <GradientImage height="25em">
+            <Intro/>
+        </GradientImage>
+        <GradientImage height="15em"><FadeInComponent once={true} text="Let's start with some background..." delay="0s" type="h1" id="aboutme"/></GradientImage>
         <AboutMe/>
-        <GradientImage height="30vh"><FadeInComponent once={true} delay="0s" text="What about practical skills?" type="h1"/></GradientImage>
+        <GradientImage height="15em"><FadeInComponent once={true} delay="0s" text="What about practical skills?" type="h1" id="skills"/></GradientImage>
         <Skills/>
-        <GradientImage height="30vh"><FadeInComponent once={true} delay="0s" text="Three qualities I'm most proud of having..." type="h1"/></GradientImage>
+        <GradientImage height="15em"><FadeInComponent once={true} delay="0s" text="Three qualities I'm most proud of having..." type="h1" id="qualities"/></GradientImage>
         <Qualities/>
-        <GradientImage height="40vh"><FadeInComponent once={true} delay="0s" text="Let's see everything come together to form practical programs!" type="h1"/></GradientImage>
+        <GradientImage height="15em"><FadeInComponent once={true} delay="0s" text="Let's see everything come together to form practical programs!" type="h1" id="projects"/></GradientImage>
         <Projects/>
-        <GradientImage height="10vh"><FadeInComponent once={true} delay="0s" text="Like what you see? Here's my info..." type="h1"/></GradientImage>
-        <GradientImage height="35vh"> <ContactMe/> </GradientImage>
+        <GradientImage height="5em"><FadeInComponent once={true} delay="0s" text="Like what you see? Here's my info..." type="h1" id="contactme"/></GradientImage>
+        <GradientImage height="15em"> <ContactMe/> </GradientImage>
         <Footer/>
     </div>
     );
 }
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('root')
-);
+export default App;
